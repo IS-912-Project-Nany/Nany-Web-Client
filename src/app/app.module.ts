@@ -8,6 +8,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { FormsModule } from '@angular/forms';
+import { CategoryComponent } from './category/category.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { FormsModule } from '@angular/forms';
     FooterComponent,
     NavbarComponent,
     LoginComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    CategoryComponent
   ],
   imports: [
     BrowserModule,

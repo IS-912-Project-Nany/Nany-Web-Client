@@ -9,6 +9,8 @@ import { LoginComponent } from './login/login.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { FormsModule } from '@angular/forms';
 import { CategoryComponent } from './category/category.component';
+import { CompanyComponent } from './company/company.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { CategoryComponent } from './category/category.component';
     NavbarComponent,
     LoginComponent,
     LandingPageComponent,
-    CategoryComponent
+    CategoryComponent,
+    CompanyComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,3 @@
-
 <!--Carousel-->
 <div id="carouselInfo" class="position-relative">
     <div id="carouselTopinfo" class="carousel carousel-land slide" data-bs-ride="carousel">
@@ -111,6 +110,32 @@
           </div>
           <div class="carousel-inner">
             <div class="carousel-item active">
+              <div class="carousel-item-bg">
+                <img src="../assets/img/Coca-Cola-bebida.webp" class="products-carousel-landing d-block " alt="...">
+              </div>
+              <p class="products-title-landing text-center">Coca Cola Vidrio</p>
+              <p class="products-price-landing text-center">L. 10.00</p>
+              <div class="position-relative">
+                <input type="number" min="0" max="50" [(ngModel)]="counter" class="products-qty-landing">
+                <button type="button" (click)='plusProduct()' class="button-counter-landing btn-plus-landing">+</button>
+                <button type="button" (click)='minusProduct()' class="button-counter-landing btn-minus-landing">-</button>
+              </div>
+              <button type="button" class="btn-primary products-btn-landing">Agregar al Carrito</button>
+            </div>
+            <div class="carousel-item">
+              <div class="carousel-item-bg">
+                <img src="../assets/img/Coca-Cola-bebida.webp" class="products-carousel-landing d-block " alt="...">
+              </div>
+              <p class="products-title-landing text-center">Coca Cola Vidrio</p>
+              <p class="products-price-landing text-center">L. 10.00</p>
+              <div class="position-relative">
+                <input type="number" min="0" max="50" [(ngModel)]="counter" class="products-qty-landing">
+                <button type="button" (click)='plusProduct()' class="button-counter-landing btn-plus-landing">+</button>
+                <button type="button" (click)='minusProduct()' class="button-counter-landing btn-minus-landing">-</button>
+              </div>
+              <button type="button" class="btn-primary products-btn-landing">Agregar al Carrito</button>
+            </div>
+            <div class="carousel-item">
               <div class="carousel-item-bg">
                 <img src="../assets/img/Coca-Cola-bebida.webp" class="products-carousel-landing d-block " alt="...">
               </div>

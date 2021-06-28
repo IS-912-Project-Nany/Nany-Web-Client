@@ -13,6 +13,7 @@ import { CategoryComponent } from './category/category.component';
 import { CompanyComponent } from './company/company.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
+import { ProductComponent } from './product/product.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { RegisterComponent } from './register/register.component';
     CategoryComponent,
     CompanyComponent,
     ProfileComponent,
-    RegisterComponent
+    RegisterComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,

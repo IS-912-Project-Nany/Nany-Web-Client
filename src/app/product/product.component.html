@@ -1,0 +1,142 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <a class="row product-company pt-2" data-bs-toggle="modal" data-bs-target="#modalCompany">
+        <div class="col-4 product-img-company">
+            <img src="../../assets/img/empresa-wendys.jpg" alt="">
+        </div>
+        <div class="col-8">
+            <h4>Wendy's</h4>
+            <p>Restaurante de comida rápida y hamburguesería</p>
+            <fa-icon class="product-start" [icon]="['fas', 'star']"></fa-icon>
+            <fa-icon class="product-start" [icon]="['fas', 'star']"></fa-icon>
+            <fa-icon class="product-start" [icon]="['fas', 'star']"></fa-icon>
+            <fa-icon class="product-start" [icon]="['fas', 'star']"></fa-icon>
+            <fa-icon class="product-start" [icon]="['far', 'star']"></fa-icon>
+            <img class="product-touch-company" src="../../assets/iconos/IconTouch-trans.png" alt="">
+        </div>
+    </a>
+</div>
+
+<h4 class="text-center mt-4">Productos</h4>
+<div class="products-landing">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="carousel-item-bg">
+                    <img src="../assets/img/Coca-Cola-bebida.webp" class="products-carousel-landing d-block " alt="...">
+                </div>
+                <p class="products-title-landing text-center">Coca Cola Vidrio</p>
+                <p class="products-price-landing text-center">L. 10.00</p>
+                <div class="position-relative">
+                    <input type="number" min="0" max="50" [(ngModel)]="counter" class="products-qty-landing">
+                    <button type="button" (click)='plusProduct()'
+                        class="button-counter-landing btn-plus-landing">+</button>
+                    <button type="button" (click)='minusProduct()'
+                        class="button-counter-landing btn-minus-landing">-</button>
+                </div>
+                <button type="button" class="btn-primary products-btn-car">Agregar al Carrito</button>
+                <button type="button" class="btn-secondary products-btn-details" data-bs-toggle="modal"
+                    data-bs-target="#modalProductDetails">Ver Detalles</button>
+            </div>
+            <div class="col-12">
+                <div class="carousel-item-bg">
+                    <img src="../assets/img/Coca-Cola-bebida.webp" class="products-carousel-landing d-block " alt="...">
+                </div>
+                <p class="products-title-landing text-center">Coca Cola Vidrio</p>
+                <p class="products-price-landing text-center">L. 10.00</p>
+                <div class="position-relative">
+                    <input type="number" min="0" max="50" [(ngModel)]="counter" class="products-qty-landing">
+                    <button type="button" (click)='plusProduct()'
+                        class="button-counter-landing btn-plus-landing">+</button>
+                    <button type="button" (click)='minusProduct()'
+                        class="button-counter-landing btn-minus-landing">-</button>
+                </div>
+                <button type="button" class="btn-primary products-btn-car">Agregar al Carrito</button>
+                <button type="button" class="btn-secondary products-btn-details" data-bs-toggle="modal"
+                    data-bs-target="#modalProductDetails">Ver Detalles</button>
+            </div>
+            <div class="col-12">
+                <div class="carousel-item-bg">
+                    <img src="../assets/img/Coca-Cola-bebida.webp" class="products-carousel-landing d-block " alt="...">
+                </div>
+                <p class="products-title-landing text-center">Coca Cola Vidrio</p>
+                <p class="products-price-landing text-center">L. 10.00</p>
+                <div class="position-relative">
+                    <input type="number" min="0" max="50" [(ngModel)]="counter" class="products-qty-landing">
+                    <button type="button" (click)='plusProduct()'
+                        class="button-counter-landing btn-plus-landing">+</button>
+                    <button type="button" (click)='minusProduct()'
+                        class="button-counter-landing btn-minus-landing">-</button>
+                </div>
+                <button type="button" class="btn-primary products-btn-car">Agregar al Carrito</button>
+                <button type="button" class="btn-secondary products-btn-details" data-bs-toggle="modal"
+                    data-bs-target="#modalProductDetails">Ver Detalles</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Modal Product Details-->
+<div class="modal fade" id="modalProductDetails" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header-company">
+                <img src="../../assets/img/banners/banner-wendys.jpg" alt="">
+            </div>
+            <div class="modal-body modal-body-product">
+                <p class="text-center">Coca Cola Vidrio 1/4li</p>
+                <img src="../../assets/img/Coca-Cola-bebida.webp" alt="">
+                <hr>
+                <p class="text-center">
+                    Coca Cola Vidrio, tamaño 25cm. Vidrio reutilizable.
+                </p>
+                <hr>
+                <p class="text-center">Costo: L. 10.00</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary float-center" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Company Info -->
+<div class="modal fade" id="modalCompany" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header-company">
+                <img src="../../assets/img/banners/banner-wendys.jpg" alt="">
+            </div>
+            <div class="modal-body">
+                <h4 class="text-center">Wendy's</h4>
+                <p class="text-justify mt-4">La marca Wendy´s se caracteriza por su espíritu innovador lo cual va desde
+                    nuevos productos y lanzamientos hasta las mejoras de imagen de las instalaciones que son frecuentes
+                    para tener una marca renovada</p>
+                <hr>
+                <p class="text-initial">Estamos ubicados en: <br />
+                    Blvd Morazan <br />
+                    Mall Multiplaza <br />
+                    Plaza Miraflores
+                </p>
+                <hr>
+                <p>
+                    Horario de Atención: <br />
+                    Lunes a Viernes: 8:00am a 10:00pm <br />
+                    Sábados y Domingos: 10:00am a 3:00pm <br />
+                </p>
+                <hr>
+                <label class="mr-2">Calificación:  </label>
+                <fa-icon class="product-start" [icon]="['fas', 'star']"></fa-icon>
+                <fa-icon class="product-start" [icon]="['fas', 'star']"></fa-icon>
+                <fa-icon class="product-start" [icon]="['fas', 'star']"></fa-icon>
+                <fa-icon class="product-start" [icon]="['fas', 'star']"></fa-icon>
+                <fa-icon class="product-start" [icon]="['far', 'star']"></fa-icon>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>

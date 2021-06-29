@@ -21,80 +21,244 @@
         </div>
     </div>
 </div>
-<!--Title Section-->
-<div class="title-banner-chck">
-    <label>Completar Orden</label>
-</div>
 
-<!--Car Items Added-->
-<div class="container">
-    <div class="row">
-        <div class="card-item-car mb-3 mt-2">
-            <button type="button" class="btn-close" aria-label="Close"></button>
-            <hr>
-            <div class="card-item-title">
-                <label>Producto</label>
+<!--Shooping Car Section-->
+<div id="ShoopingCarSection" class="d-none">
+    <!--Title Section-->
+    <div class="title-banner-chck">
+        <label>Carrito de Compras</label>
+    </div>
+
+    <!--Car Items Added-->
+    <div class="container">
+        <div class="row">
+            <div class="card-item-car mb-3 mt-2">
+                <button type="button" class="btn-close" aria-label="Close"></button>
+                <hr>
+                <div class="card-item-title">
+                    <label>Producto</label>
+                </div>
+                <div class="card-item-description">
+                    <p>Wendy´s Pack =1 HAM, 1 REF 1.25L, 1 PAPAS MED</p>
+                    <small class="cost-title">Precio Unitario:</small>
+                    <small class="cost-details">L. 20.00</small>
+                    <small class="cost-title">ISV:</small>
+                    <small class="cost-details">+ L. 5.00</small>
+                    <small class="cost-title">Envío:</small>
+                    <small class="cost-details">+ L. 51.00</small>
+                </div>
+                <hr>
+                <div class="card-item-title mt-2">
+                    <label>Cantidad</label>
+                </div>
+                <div class="card-item-quantity">
+                    <input type="number" min="0">
+                </div>
+                <hr>
+                <div class="card-item-title mt-1">
+                    <label>Total</label>
+                </div>
+                <div class="card-item-description">
+                    <h6 class="cost-total">L. 51.00</h6>
+                </div>
             </div>
-            <div class="card-item-description">
-                <p>Wendy´s Pack =1 HAM, 1 REF 1.25L, 1 PAPAS MED</p>
-                <small class="cost-title">Precio Unitario:</small>
-                <small class="cost-details">L. 20.00</small>
-                <small class="cost-title">ISV:</small>
-                <small class="cost-details">+ L. 5.00</small>
-                <small class="cost-title">Envío:</small>
-                <small class="cost-details">+ L. 51.00</small>
-            </div>
-            <hr>
-            <div class="card-item-title mt-2">
-                <label>Cantidad</label>
-            </div>
-            <div class="card-item-quantity">
-                <input type="number" min="0">
-            </div>
-            <hr>
-            <div class="card-item-title mt-1">
-                <label>Total</label>
-            </div>
-            <div class="card-item-description">
-                <h6 class="cost-total">L. 51.00</h6>
-            </div>
-        </div>
-        <div class="card-item-car mb-3 mt-2">
-            <button type="button" class="btn-close" aria-label="Close"></button>
-            <hr>
-            <div class="card-item-title">
-                <label>Producto</label>
-            </div>
-            <div class="card-item-description">
-                <p>Wendy´s Pack =1 HAM, 1 REF 1.25L, 1 PAPAS MED</p>
-                <small class="cost-title">Precio Unitario:</small>
-                <small class="cost-details">L. 20.00</small>
-                <small class="cost-title">ISV:</small>
-                <small class="cost-details">+ L. 5.00</small>
-                <small class="cost-title">Envío:</small>
-                <small class="cost-details">+ L. 51.00</small>
-            </div>
-            <hr>
-            <div class="card-item-title mt-2">
-                <label>Cantidad</label>
-            </div>
-            <div class="card-item-quantity">
-                <input type="number" min="0">
-            </div>
-            <hr>
-            <div class="card-item-title mt-1">
-                <label>Total</label>
-            </div>
-            <div class="card-item-description">
-                <h6 class="cost-total">L. 51.00</h6>
+            <div class="card-item-car mb-3 mt-2">
+                <button type="button" class="btn-close" aria-label="Close"></button>
+                <hr>
+                <div class="card-item-title">
+                    <label>Producto</label>
+                </div>
+                <div class="card-item-description">
+                    <p>Wendy´s Pack =1 HAM, 1 REF 1.25L, 1 PAPAS MED</p>
+                    <small class="cost-title">Precio Unitario:</small>
+                    <small class="cost-details">L. 20.00</small>
+                    <small class="cost-title">ISV:</small>
+                    <small class="cost-details">+ L. 5.00</small>
+                    <small class="cost-title">Envío:</small>
+                    <small class="cost-details">+ L. 51.00</small>
+                </div>
+                <hr>
+                <div class="card-item-title mt-2">
+                    <label>Cantidad</label>
+                </div>
+                <div class="card-item-quantity">
+                    <input type="number" min="0">
+                </div>
+                <hr>
+                <div class="card-item-title mt-1">
+                    <label>Total</label>
+                </div>
+                <div class="card-item-description">
+                    <h6 class="cost-total">L. 51.00</h6>
+                </div>
             </div>
         </div>
     </div>
+
+    <div class="title-banner-chck">
+        <label>Total del Carrito</label>
+    </div>
+
+    <!--Total Products Shooping-Car-->
+    <div class="container">
+        <div class="row">
+            <div class="card-item-car mb-3 mt-2">
+                <hr>
+                <div class="card-item-title mt-1">
+                    <label>Total</label>
+                </div>
+                <div class="card-item-description">
+                    <h6 class="cost-total">L. 51.00</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button type="button" class="btn-check-continue mt-5">Checkout</button>
+    <button type="button" class="btn-check-back mb-5">Seguir Comprando</button>
+
 </div>
 
-<div class="title-banner-chck">
-    <label>Total del Carrito</label>
+<!--Checkout Car Section-->
+<div id="CheckoutSection" class="d-none">
+    <!--Title Section-->
+    <div class="title-banner-chck">
+        <label>Checkout</label>
+    </div>
+
+    <!--Delivery Information-->
+    <div class="container">
+        <p class="title-checkout">Necesitamos saber donde te encuentras</p>
+        <hr class="header-checkout">
+        <form class="form-checkout-info mt-4 mb-5">
+            <label for="nameReceptorCustomer">¿A quién le entregaremos la orden?</label>
+            <input type="text" id="nameReceptorCustomer">
+            <label for="addressCustomer">Dirección exacta de donde te encuentras</label>
+            <textarea id="addressCustomer" rows="5"></textarea>
+            <label for="">Apunta en el mapa tu ubicación</label>
+            <app-map></app-map>
+        </form>
+        <p class="title-checkout">Su Orden</p>
+        <hr class="header-checkout">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Producto</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Envío</th>
+                    <th scope="col">ISV</th>
+                    <th scope="col">Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="invoice-description">Wendy´s Pack =1 HAM, 1 REF 1.25L, 1 PAPAS MED</td>
+                    <td class="invoice-cost">L.100.00</td>
+                    <td class="invoice-cost">L.100.00</td>
+                    <td class="invoice-cost">L.100.00</td>
+                    <td class="invoice-cost">L.100.00</td>
+                </tr>
+                <tr>
+                    <td class="invoice-description">Wendy´s Pack =1 HAM, 1 REF 1.25L, 1 PAPAS MED</td>
+                    <td class="invoice-cost">L.100.00</td>
+                    <td class="invoice-cost">L.100.00</td>
+                    <td class="invoice-cost">L.100.00</td>
+                    <td class="invoice-cost">L.100.00</td>
+                </tr>
+                <tr>
+                    <td class="invoice-description">Wendy´s Pack =1 HAM, 1 REF 1.25L, 1 PAPAS MED</td>
+                    <td class="invoice-cost">L.100.00</td>
+                    <td class="invoice-cost">L.100.00</td>
+                    <td class="invoice-cost">L.100.00</td>
+                    <td class="invoice-cost">L.100.00</td>
+                </tr>
+                <tr>
+                    <td class="invoice-description">Wendy´s Pack =1 HAM, 1 REF 1.25L, 1 PAPAS MED</td>
+                    <td class="invoice-cost">L.100.00</td>
+                    <td class="invoice-cost">L.100.00</td>
+                    <td class="invoice-cost">L.100.00</td>
+                    <td class="invoice-cost">L.100.00</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>Total:</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="invoice-cost">L.100.00</td>
+                </tr>
+            </tfoot>
+        </table>
+
+        <p class="title-checkout mt-5">Método de Pago</p>
+        <hr class="header-checkout">
+        <form class="form-checkout-info mt-4">
+            <label for="creditNumber">Número de Tarjeta de Crédito/Débito</label>
+            <input type="text" id="creditNumber">
+            <img src="../../assets/img/empresa-logo-mastercard.svg" alt="" srcset="">
+            <img src="../../assets/img/empresa-Visa-Logo.png" alt="" srcset="">
+            <br />
+            <label for="creditName">Nombre del Titular</label>
+            <input type="text" id="creditName">
+            <label for="creditDateExp">Fecha de Expiración</label>
+            <input type="date" id="creditDateExp">
+            <label for="creditCCV">CCV</label>
+            <input type="text" id="creditCCV">
+        </form>
+    </div>
+    <hr class="footer-check-line">
+    <button type="button" class="btn-check-continue mt-5">Checkout</button>
+    <button type="button" class="btn-check-back mb-5">Regresar al Carrito</button>
 </div>
 
+<div id="OrderCompleteSection">
+    <!--Title Section-->
+    <div class="title-banner-chck">
+        <label>Completar Orden</label>
+    </div>
+    <div class="check-order-header">
+        <img src="../../assets/iconos/check-order.png" alt="">
+        <h6 class="text-center">Orden completada</h6>
+        <p>Gracias, su orden se ha recibido</p>
+    </div>
+    <div class="check-order-resume">
+        <label>Numero de Orden</label>
+        <p>23</p>
+        <label>Fecha</label>
+        <p>Junio 6 2021</p>
+        <label>Total</label>
+        <p>L.105.00</p>
+        <label>Número de Tarjeta</label>
+        <p>XXXX-XXXX-XXXX</p>
+    </div>
 
+    <div class="container">
+        <p class="title-checkout mt-5">Detalles del Cliente</p>
+        <hr class="header-checkout">
+        <table class="table table-details-small ">
+            <tbody>
+                <tr>
+                    <td>Nombre</td>
+                    <td>Luis Miguel</td>
+                </tr>
+                <tr>
+                    <td>Correo</td>
+                    <td>elcorreo@unah.hn</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="title-checkout mt-5">Dirección del Cliente</p>
+        <hr class="header-checkout">
+        <p class="order-description">Calle Principal
+            Bloque H
+            Casa # 234 Color Rojo
+            Col. La Esperanza
+            Tegucigalpa, HN</p>
+    </div>
+    <h4 class="text-center mt-5">Su orden arribara lo más pronto posible!</h4>
+    <h5 class="text-center mb-5">Gracias por elegir Nany</h5>
+    <hr class="footer-check-line">
+    <button type="button" class="btn-check-continue mt-4 mb-5">Listo</button>
+</div>
 <app-footer></app-footer>

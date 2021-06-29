@@ -7,6 +7,10 @@
     font-family: "Raleway"
     src: url('assets/fonts/Raleway/static/Raleway-Bold.ttf')
 
+@font-face
+    font-family: "Raleway-Thin"
+    src: url('assets/fonts/Raleway/static/Raleway-Thin.ttf')
+
 /*Nany Colors*/
 $color-pink1: #D60451
 $color-pink2: #A6032F
@@ -738,6 +742,11 @@ h3,h4
         text-align: right
         padding-right: 10px
         display: block
+        outline: none
+
+    .card-item-quantity input:focus-visible
+        border-color: $color-pink2
+        border-radius: 20px
 
     .cost-total
         color: #000
@@ -745,3 +754,132 @@ h3,h4
         font-weight: bold
         text-align: right
         margin-top: 1.0rem
+
+    .btn-check-continue
+        background-color: $color-pink2
+        color: #fff
+        border: none
+        border-radius: 25px
+        width: 70%
+        margin: 10px auto
+        display: block
+        height: 45px
+        font-size: 1.2rem
+
+    .btn-check-back
+        background-color: #221E1F
+        color: #fff
+        border: none
+        border-radius: 25px
+        width: 70%
+        margin: 10px auto
+        display: block
+        height: 45px
+        font-size: 1.2rem
+
+    .header-checkout
+        color: $color-pink2
+        width: 30%
+        height: 1px !important
+        opacity: inherit
+        margin-top: 4px
+
+    .title-checkout
+        margin-bottom: 0
+
+    .form-checkout-info label
+        color: #5b5959
+        font-size: 0.9rem
+
+    .form-checkout-info input
+        height: 35px
+
+    .form-checkout-info input, .form-checkout-info textarea
+        border-radius: 10px
+        border: 1px solid #5b595952
+        margin-top: 10px
+        margin-bottom: 20px
+        padding-left: 10px
+        outline: none
+        box-sizing: border-box
+        width: 100%
+
+    .form-checkout-info input:focus-visible, .form-checkout-info textarea:focus-visible
+        border: 1px solid $color-pink2
+
+    .form-checkout-info img
+        width: auto
+        height: 20px
+        display: inline
+        margin-top: -15px
+        float: right
+        margin-right: auto
+
+    .footer-check-line
+        color: $color-pink2
+        width: 80%
+        margin-left: auto
+        margin-right: auto
+        display: block
+        opacity: 1
+
+    .table
+        background-color: #F3F2F0
+        border-radius: 10px
+        padding: 10px
+
+    .table th
+        font-size: 0.7rem
+
+    .table td
+        font-family: 'Roboto'
+        box-sizing: border-box
+
+    tfoot
+        border-color: transparent
+
+    .invoice-description
+        word-break: break-word
+        font-size: 0.6rem !important
+
+    .invoice-cost
+        font-size: 0.5rem !important
+
+    .check-order-header
+        color: $color-pink2
+        text-align: center
+
+    .check-order-header img
+        display: block
+        margin-left: auto
+        margin-right: auto
+
+    .check-order-header p
+        font-size: 0.9rem
+        font-weight: bold
+        font-family: "Raleway-Thin" !important
+
+    .check-order-resume
+        margin-top: 40px
+        border: 1px solid #80808038
+        border-radius: 10px
+        padding: 20px
+        margin-left: 0.8rem
+        margin-right: 0.8rem
+
+    .check-order-resume label
+        font-family: "Raleway-Thin" !important
+
+    .table-details-small
+        background-color: transparent !important
+        width: 95%
+        margin-left: 0.5rem
+        margin-right: 0.5rem
+        font-family: 'Raleway'
+        margin-bottom: 20px
+    
+    .order-description
+        color: gray
+        word-break: break-word
+        text-align: left
+        margin-bottom: 70px

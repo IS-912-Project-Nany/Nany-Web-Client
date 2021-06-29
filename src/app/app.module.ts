@@ -15,6 +15,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
 import { ProductComponent } from './product/product.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { MapComponent } from './map/map.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { CheckoutComponent } from './checkout/checkout.component';
     ProfileComponent,
     RegisterComponent,
     ProductComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,

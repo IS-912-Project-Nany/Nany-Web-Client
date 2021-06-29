@@ -14,6 +14,7 @@ import { CompanyComponent } from './company/company.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
 import { ProductComponent } from './product/product.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ProductComponent } from './product/product.component';
     CompanyComponent,
     ProfileComponent,
     RegisterComponent,
-    ProductComponent
+    ProductComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,

@@ -57,7 +57,9 @@
             <h6>Destino: Col. la Travesia</h6>
         </div>
         <div class="col-4 mb-2">
-            <img class="d-block img-historial" src="../../assets/img/products/wendys-food.jpg" alt="">
+            <a data-bs-toggle="modal" data-bs-target="#modalInvoice" class="col-4 mb-2">
+                <img class="d-block img-historial" src="../../assets/img/products/wendys-food.jpg" alt="">
+            </a>
             <button class="d-block btn btn-state-order" style="background-color: #FF1E1E" type="button">En Camino</button>
         </div>
         <hr>
@@ -100,6 +102,73 @@
             <button class="d-block btn btn-state-order" style="background-color: #FFE500" type="button">En Origen</button>
         </div>
         <hr>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalInvoice" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <img src="../assets/logos/Logo-Nany-trans-1.png" id="logo">
+            </div>
+            <div class="modal-body container">
+                <h3 class="text-center">Factura</h3>
+                <table class="table mt-3">
+                    <thead>
+                        <tr>
+                            <th scope="col">Producto</th>
+                            <th scope="col">Precio</th>
+                            <th scope="col">Envío</th>
+                            <th scope="col">ISV</th>
+                            <th scope="col">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="invoice-description">Wendy´s Pack =1 HAM, 1 REF 1.25L, 1 PAPAS MED</td>
+                            <td class="invoice-cost">L.100.00</td>
+                            <td class="invoice-cost">L.100.00</td>
+                            <td class="invoice-cost">L.100.00</td>
+                            <td class="invoice-cost">L.100.00</td>
+                        </tr>
+                        <tr>
+                            <td class="invoice-description">Wendy´s Pack =1 HAM, 1 REF 1.25L, 1 PAPAS MED</td>
+                            <td class="invoice-cost">L.100.00</td>
+                            <td class="invoice-cost">L.100.00</td>
+                            <td class="invoice-cost">L.100.00</td>
+                            <td class="invoice-cost">L.100.00</td>
+                        </tr>
+                        <tr>
+                            <td class="invoice-description">Wendy´s Pack =1 HAM, 1 REF 1.25L, 1 PAPAS MED</td>
+                            <td class="invoice-cost">L.100.00</td>
+                            <td class="invoice-cost">L.100.00</td>
+                            <td class="invoice-cost">L.100.00</td>
+                            <td class="invoice-cost">L.100.00</td>
+                        </tr>
+                        <tr>
+                            <td class="invoice-description">Wendy´s Pack =1 HAM, 1 REF 1.25L, 1 PAPAS MED</td>
+                            <td class="invoice-cost">L.100.00</td>
+                            <td class="invoice-cost">L.100.00</td>
+                            <td class="invoice-cost">L.100.00</td>
+                            <td class="invoice-cost">L.100.00</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>Total:</th>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="invoice-cost">L.100.00</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-modal" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
     </div>
 </div>
 <app-footer></app-footer>

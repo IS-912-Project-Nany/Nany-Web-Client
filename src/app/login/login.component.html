@@ -1,16 +1,32 @@
 <div class="container-fluid container-login">
     <img src="../assets/logos/Logo-Nany-trans-1.png" id="logo">
-    <div class="form-contents">
-        <h2>Inicio de Sesión</h2>
-        <h5>Correo electrónico</h5>
-        <input type="text" class="form-control">
-        <h5>Contraseña</h5>
-        <input type="password" class="form-control">
-    </div>
-    <div class="form-links">
-        <a href="">He olvidado mi contraseña</a>
-        <button type="button" class="btn btn-success" id="btn-login">Iniciar sesión</button>
-        <h6>¿Aun no tienes una cuenta?</h6>
-        <a href="" id="register">Registrate</a>
-    </div>
+    <form class="needs-validation" novalidate [formGroup]="formLogin">
+        <div class="form-contents">
+            <h2>Inicio de Sesión</h2>
+            <div>
+                <h5>Correo electrónico</h5>
+                <input type="email" class="form-control" [ngClass]="{'is-invalid': email.invalid && (email.dirty || email.touched), 'is-valid': email.valid}"
+                placeholder="ejemplo@gmail.com" formControlName="email" required>
+                <div class="invalid-feedback login-feedback" *ngIf="email.errors">
+                    <span *ngIf="email.errors.pattern">Correo Inválido</span>
+                    <span *ngIf="email.errors.required">Este campo no puede quedar vacío</span>
+                </div>
+            </div>
+            <div>
+                <h5>Contraseña</h5>
+                <input type="password" class="form-control" name="password" autocomplete="on"
+                [ngClass]="{'is-invalid': password.invalid && (password.dirty || password.touched), 'is-valid': password.valid}"
+                formControlName="password" required>
+                <div class="invalid-feedback login-feedback" *ngIf="password.errors">
+                    <span *ngIf="password.errors.required">Este campo no puede quedar vacío</span>
+                    <span *ngIf="password.errors.minlength">Mínimo 8 caracteres</span>
+                </div>
+            </div>
+        </div>
+        <div class="form-links pt-2">
+            <button type="button" class="btn btn-success" id="btn-login" [disabled]="!formLogin.valid">Iniciar sesión</button>
+            <h6>¿Aun no tienes una cuenta?</h6>
+            <a href="" id="register">Registrate</a>
+        </div>
+    </form>
 </div>

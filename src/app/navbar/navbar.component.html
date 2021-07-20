@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <img src="../../assets/logos/Logo-Nany-trans-1.png" id="img-logo">
+    <img src="../../assets/logos/Logo-Nany-trans-1.png" routerLink="/home"  id="img-logo">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -12,14 +12,14 @@
           <hr>
         </li>
         <li class="nav-item">
-          <button type="button" class="nav-link btn btn-loggin" id="btnNoLogged1">Ordena</button>
+          <button type="button" class="nav-link btn btn-loggin" routerLink="/home" id="btnNoLogged1">Ordena</button>
         </li>
         <li class="nav-item">
-          <button type="button" class="nav-link btn btn-loggin mt-3" id="btnNoLogged2">Iniciar Sesión</button>
+          <button type="button" class="nav-link btn btn-loggin mt-3" routerLink="/login" id="btnNoLogged2">Iniciar Sesión</button>
         </li>
         <li class="nav-item">
         </li>
-        <button type="button" class="nav-link btn btn-loggin mt-3 mb-3" id="btnNoLogged3">Registrarse</button>
+        <button type="button" class="nav-link btn btn-loggin mt-3 mb-3"  routerLink="/register" id="btnNoLogged3">Registrarse</button>
       </ul>
       <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="LoggedDropdown">
         <li class="nav-item">
@@ -27,18 +27,18 @@
           <hr>
         </li>
         <li class="nav-item">
-          <button type="button" class="nav-link btn btn-loggin" id="btnLogged1">
+          <button type="button" class="nav-link btn btn-loggin" routerLink="/profile" id="btnLogged1">
             <fa-icon class="fa-dropdown" [icon]="faUserCircle"></fa-icon>
             Melany Ávila</button>
         </li>
         <li class="nav-item">
-          <button type="button" class="nav-link btn btn-loggin mt-3" id="btnLogged2">
+          <button type="button" class="nav-link btn btn-loggin mt-3" routerLink="/profile"  id="btnLogged2">
             <fa-icon class="fa-dropdown" [icon]="faSignOutAlt"></fa-icon>
             Historial de Compras</button>
         </li>
         <li class="nav-item">
         </li>
-        <button type="button" class="nav-link btn btn-loggin mt-3 mb-3" id="btnLogged3">
+        <button type="button" class="nav-link btn btn-loggin mt-3 mb-3" routerLink="/"   id="btnLogged3">
           <fa-icon class="fa-dropdown" [icon]="faClipboardList"></fa-icon>
           Cerrar Sesión</button>
       </ul>

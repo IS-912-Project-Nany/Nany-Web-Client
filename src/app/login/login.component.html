@@ -1,5 +1,5 @@
 <div class="container-fluid container-login">
-    <img src="../assets/logos/Logo-Nany-trans-1.png" id="logo">
+    <img src="../assets/logos/Logo-Nany-trans-1.png" routerLink="/" id="logo">
     <form class="needs-validation" novalidate [formGroup]="formLogin">
         <div class="form-contents">
             <h2>Inicio de Sesión</h2>
@@ -24,9 +24,9 @@
             </div>
         </div>
         <div class="form-links pt-2">
-            <button type="button" class="btn btn-success" id="btn-login" [disabled]="!formLogin.valid">Iniciar sesión</button>
+            <button type="button" class="btn btn-success" id="btn-login"  routerLink="/home"[disabled]="!formLogin.valid">Iniciar sesión</button>
             <h6>¿Aun no tienes una cuenta?</h6>
-            <a href="" id="register">Registrate</a>
+            <a href="" routerLink="/register"  id="register">Registrate</a>
         </div>
     </form>
 </div>

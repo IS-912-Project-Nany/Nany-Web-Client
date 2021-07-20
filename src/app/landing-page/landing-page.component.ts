@@ -5,19 +5,9 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './landing-page.component.html'
 })
 export class LandingPageComponent implements OnInit {
-  counter: number = 1
-
+  
   constructor() { }
 
   ngOnInit(): void {
   }
-
-  plusProduct() {
-    this.counter++;
-  }
-
-  minusProduct() {
-    this.counter--;
-  }
-
 }

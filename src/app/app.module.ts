@@ -16,6 +16,7 @@ import { RegisterComponent } from './register/register.component';
 import { ProductComponent } from './product/product.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { MapComponent } from './map/map.component';
+import { ButtonAddProductComponent } from './product/button-add-product/button-add-product.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { MapComponent } from './map/map.component';
     RegisterComponent,
     ProductComponent,
     CheckoutComponent,
-    MapComponent
+    MapComponent,
+    ButtonAddProductComponent
   ],
   imports: [
     BrowserModule,

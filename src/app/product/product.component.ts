@@ -8,18 +8,9 @@ import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
   templateUrl: './product.component.html',
 })
 export class ProductComponent implements OnInit {
-  counter: number = 1;
   constructor(library: FaIconLibrary) {
     library.addIcons(fasStar, farStar);
   }
 
   ngOnInit(): void {}
-  plusProduct() {
-    this.counter++;
-  }
-
-  minusProduct() {
-    this.counter--;
-  }
-  F;
 }

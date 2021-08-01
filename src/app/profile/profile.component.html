@@ -47,61 +47,25 @@
 
 <div id="historialContainer" class="container pb-5">
     <h3 class="text-center my-4">Mis compras realizadas</h3>
-    <div class="row" id="historial">
-        <h3 class="text-initial mt-2">08/09/2021</h3>
-        <hr>
-        <div class="col-8 mt-2">
-            <h5>Wendys Pack</h5>
-            <h6> Comprador: Melany Avila</h6>
-            <h6>Total de Factura: L. 990.00</h6>
-            <h6>Destino: Col. la Travesia</h6>
+    <div id="historial">
+        <div *ngFor="let order of orders" class="row">
+            <h3 class="text-initial mt-2">{{order.date}}</h3>
+            <hr>
+            <div class="col-8 mt-2">
+                <h5>{{order.productName}}</h5>
+                <h6> Comprador: {{order.buyer}}</h6>
+                <h6>Total de Factura: L. {{order.total}}</h6>
+                <h6>Destino: {{order.destination}}</h6>
+            </div>
+            <div class="col-4 mb-2">
+                <a data-bs-toggle="modal" data-bs-target="#modalInvoice" class="col-4 mb-2">
+                    <img class="d-block img-historial" :src="{{order.imgOrder}}" alt="">
+                </a>
+                <button class="d-block btn btn-state-order" :style="background-color:{{order.state.color}}"
+                    type="button">{{order.state.name}}</button>
+            </div>
+            <hr>
         </div>
-        <div class="col-4 mb-2">
-            <a data-bs-toggle="modal" data-bs-target="#modalInvoice" class="col-4 mb-2">
-                <img class="d-block img-historial" src="../../assets/img/products/wendys-food.jpg" alt="">
-            </a>
-            <button class="d-block btn btn-state-order" style="background-color: #FF1E1E" type="button">En Camino</button>
-        </div>
-        <hr>
-        <h3 class="text-initial mt-2">08/09/2021</h3>
-        <hr>
-        <div class="col-8 mt-2">
-            <h5>Wendys Pack</h5>
-            <h6> Comprador: Melany Avila</h6>
-            <h6>Total de Factura: L. 990.00</h6>
-            <h6>Destino: Col. la Travesia</h6>
-        </div>
-        <div class="col-4 mb-2">
-            <img class="d-block img-historial" src="../../assets/img/products/wendys-food.jpg" alt="">
-            <button class="d-block btn btn-state-order" style="background-color: #00EF35" type="button">En Entregada</button>
-        </div>
-        <hr>
-        <h3 class="text-initial mt-2">08/09/2021</h3>
-        <hr>
-        <div class="col-8 mt-2">
-            <h5>Wendys Pack</h5>
-            <h6> Comprador: Melany Avila</h6>
-            <h6>Total de Factura: L. 990.00</h6>
-            <h6>Destino: Col. la Travesia</h6>
-        </div>
-        <div class="col-4 mb-2">
-            <img class="d-block img-historial" src="../../assets/img/products/wendys-food.jpg" alt="">
-            <button class="d-block btn btn-state-order" style="background-color: #FF008A" type="button">En Destino</button>
-        </div>
-        <hr>
-        <h3 class="text-initial mt-2">08/09/2021</h3>
-        <hr>
-        <div class="col-8 mt-2">
-            <h5>Wendys Pack</h5>
-            <h6> Comprador: Melany Avila</h6>
-            <h6>Total de Factura: L. 990.00</h6>
-            <h6>Destino: Col. la Travesia</h6>
-        </div>
-        <div class="col-4 mb-2">
-            <img class="d-block img-historial" src="../../assets/img/products/wendys-food.jpg" alt="">
-            <button class="d-block btn btn-state-order" style="background-color: #FFE500" type="button">En Origen</button>
-        </div>
-        <hr>
     </div>
 </div>
 

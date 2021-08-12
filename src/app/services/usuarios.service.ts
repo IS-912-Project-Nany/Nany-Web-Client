@@ -1,0 +1,16 @@
+import { API_BASE_URL } from '../app.config';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class UsuariosService {
+
+  constructor(private httpClient: HttpClient) { }
+
+  registrar(data: any): Observable<any> {
+    return this.httpClient.post(`${API_BASE_URL}`, data);
+  }
+}

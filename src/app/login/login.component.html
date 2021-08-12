@@ -5,11 +5,12 @@
             <h2>Inicio de Sesión</h2>
             <div>
                 <h5>Correo electrónico</h5>
-                <input type="email" class="form-control" [ngClass]="{'is-invalid': email.invalid && (email.dirty || email.touched), 'is-valid': email.valid}"
-                placeholder="ejemplo@gmail.com" formControlName="email" required>
-                <div class="invalid-feedback login-feedback" *ngIf="email.errors">
-                    <span *ngIf="email.errors.pattern">Correo Inválido</span>
-                    <span *ngIf="email.errors.required">Este campo no puede quedar vacío</span>
+                <input type="email" class="form-control" [ngClass]="{'is-invalid': correo.invalid && (correo.dirty || correo.touched), 'is-valid': correo.valid}"
+                placeholder="ejemplo@gmail.com" formControlName="correo" required>
+                <div class="invalid-feedback login-feedback" *ngIf="correo.errors">
+                    <span *ngIf="correo.errors.pattern">Correo Inválido</span>
+                    <span *ngIf="correo.errors.required && (responseLoggin.code != 0)">Este campo no puede quedar vacío</span>
+                    <span *ngIf="responseLoggin.code == 0">{{responseLoggin.message}}</span>
                 </div>
             </div>
             <div>
@@ -18,13 +19,17 @@
                 [ngClass]="{'is-invalid': password.invalid && (password.dirty || password.touched), 'is-valid': password.valid}"
                 formControlName="password" required>
                 <div class="invalid-feedback login-feedback" *ngIf="password.errors">
-                    <span *ngIf="password.errors.required">Este campo no puede quedar vacío</span>
-                    <span *ngIf="password.errors.minlength">Mínimo 8 caracteres</span>
+                    <span *ngIf="password.errors.required  && (responseLoggin.code != 2)">Este campo no puede quedar vacío</span>
+                    <span *ngIf="password.errors.minlength && (responseLoggin.code != 2)">Mínimo 8 caracteres</span>
+                    <span *ngIf="responseLoggin.code == 2">{{responseLoggin.message}}</span>
                 </div>
             </div>
         </div>
         <div class="form-links pt-2">
-            <button type="button" class="btn btn-success" id="btn-login"  routerLink="/home"[disabled]="!formLogin.valid">Iniciar sesión</button>
+            <button type="button" class="btn btn-success" id="btn-login" (click)="login()" [disabled]="!formLogin.valid">Iniciar sesión</button>
+            <div class="response-loggin" *ngIf="">
+                <span>{{responseLoggin.message}}</span>
+            </div>
             <h6>¿Aun no tienes una cuenta?</h6>
             <a href="" routerLink="/register"  id="register">Registrate</a>
         </div>

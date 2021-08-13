@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { AuthService } from '../services/auth.service';
 
@@ -24,7 +25,8 @@ export class LoginComponent implements OnInit {
   responseLoggin: any = '';
   constructor(
     private authService: AuthService,
-    private cookiesService: CookieService
+    private cookiesService: CookieService,
+    private _route:Router
   ) {}
 
   ngOnInit(): void {}
@@ -48,6 +50,7 @@ export class LoginComponent implements OnInit {
             dateNow
           );
           console.log('Logeado con exito');
+          this._route.navigate(['/home']);
         } else if (result.code == 2) {
           // Contrasenia Incorrecta
           this.responseLoggin = result;

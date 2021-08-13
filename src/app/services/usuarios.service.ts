@@ -17,4 +17,8 @@ export class UsuariosService {
   obtenerUsuario(idUsuario: String): Observable<any> {
     return this.httpClient.get(`${API_BASE_URL}/usuarios/${idUsuario}`);
   }
+
+  actualizarUsuario(idUsuario: String, data: any): Observable<any> {
+    return this.httpClient.put(`${API_BASE_URL}/usuarios/${idUsuario}`, data);
+  }
 }

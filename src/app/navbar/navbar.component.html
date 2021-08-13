@@ -6,7 +6,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="noLoggedDropdown">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0" *ngIf="usuario == ''" id="noLoggedDropdown">
         <li class="nav-item">
           <img src="../../assets/logos/Logo2-Nany-trans-blanco.png" id="logoNavbar">
           <hr>
@@ -21,7 +21,7 @@
         </li>
         <button type="button" class="nav-link btn btn-loggin mt-3 mb-3"  routerLink="/register" id="btnNoLogged3">Registrarse</button>
       </ul>
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="LoggedDropdown">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0" *ngIf="usuario != ''" id="LoggedDropdown">
         <li class="nav-item">
           <img src="../../assets/logos/Logo2-Nany-trans.png" id="logoNavbar">
           <hr>
@@ -29,7 +29,7 @@
         <li class="nav-item">
           <button type="button" class="nav-link btn btn-loggin" routerLink="/profile" id="btnLogged1">
             <fa-icon class="fa-dropdown" [icon]="faUserCircle"></fa-icon>
-            Melany Ávila</button>
+            {{usuario.nombre}} {{usuario.apellido}}</button>
         </li>
         <li class="nav-item">
           <button type="button" class="nav-link btn btn-loggin mt-3" routerLink="/profile"  id="btnLogged2">
@@ -38,7 +38,7 @@
         </li>
         <li class="nav-item">
         </li>
-        <button type="button" class="nav-link btn btn-loggin mt-3 mb-3" routerLink="/"   id="btnLogged3">
+        <button type="button" class="nav-link btn btn-loggin mt-3 mb-3" (click)="logOut()" id="btnLogged3">
           <fa-icon class="fa-dropdown" [icon]="faClipboardList"></fa-icon>
           Cerrar Sesión</button>
       </ul>

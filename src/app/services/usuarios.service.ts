@@ -11,6 +11,10 @@ export class UsuariosService {
   constructor(private httpClient: HttpClient) { }
 
   registrar(data: any): Observable<any> {
-    return this.httpClient.post(`${API_BASE_URL}`, data);
+    return this.httpClient.post(`${API_BASE_URL}/usuarios`, data);
+  }
+
+  obtenerUsuario(idUsuario: String): Observable<any> {
+    return this.httpClient.get(`${API_BASE_URL}/usuarios/${idUsuario}`);
   }
 }

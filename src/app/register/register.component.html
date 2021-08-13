@@ -3,36 +3,37 @@
     <div class="info">
         <h6>Completa tus datos personales para comenzar</h6>
     </div>
-    <form class="needs-validation" novalidate [formGroup]="formRegister">
+    <form class="needs-validation" novalidate [formGroup]="formRegistro">
         <div class="form-contenedor">
             <h2>Registrarse</h2>
             <div>
                 <h5>Nombre</h5>
-                <input type="text" class="form-control inp-form" formControlName="name" required
-                [ngClass]="{'is-invalid': name.invalid && (name.dirty || name.touched), 'is-valid': name.valid}">
-                <div class="invalid-feedback login-feedback" *ngIf="name.errors">
-                    <span *ngIf="name.errors.required">Este campo no puede quedar vacío</span>
-                    <span *ngIf="name.errors.maxlength">Máximo 30 caracteres</span>
+                <input type="text" class="form-control inp-form" formControlName="nombre" required
+                [ngClass]="{'is-invalid': nombre.invalid && (nombre.dirty || nombre.touched), 'is-valid': nombre.valid}">
+                <div class="invalid-feedback login-feedback" *ngIf="nombre.errors">
+                    <span *ngIf="nombre.errors.required">Este campo no puede quedar vacío</span>
+                    <span *ngIf="nombre.errors.maxlength">Máximo 30 caracteres</span>
                 </div>
             </div>
             <div>
                 <h5>Apellido</h5>
-                <input type="text" class="form-control inp-form" formControlName="lastName" required
-                [ngClass]="{'is-invalid': lastName.invalid && (lastName.dirty || lastName.touched), 'is-valid': lastName.valid}">
-                <div class="invalid-feedback login-feedback" *ngIf="lastName.errors">
-                    <span *ngIf="lastName.errors.required">Este campo no puede quedar vacío</span>
-                    <span *ngIf="lastName.errors.maxlength">Máximo 30 caracteres</span>
+                <input type="text" class="form-control inp-form" formControlName="apellido" required
+                [ngClass]="{'is-invalid': apellido.invalid && (apellido.dirty || apellido.touched), 'is-valid': apellido.valid}">
+                <div class="invalid-feedback login-feedback" *ngIf="apellido.errors">
+                    <span *ngIf="apellido.errors.required">Este campo no puede quedar vacío</span>
+                    <span *ngIf="apellido.errors.maxlength">Máximo 30 caracteres</span>
                 </div>
             </div>
         </div>
         <div class="form-links register">
             <div>
                 <h2>Correo electrónico</h2>
-                <input type="text" class="form-control inp-form" [ngClass]="{'is-invalid': email.invalid && (email.dirty || email.touched), 'is-valid': email.valid}"
-                placeholder="ejemplo@gmail.com" formControlName="email" required>
-                <div class="invalid-feedback login-feedback" *ngIf="email.errors">
-                    <span *ngIf="email.errors.pattern">Correo Inválido</span>
-                    <span *ngIf="email.errors.required">Este campo no puede quedar vacío</span>
+                <input type="email" class="form-control inp-form" [ngClass]="{'is-invalid': correo.invalid && (correo.dirty || correo.touched), 'is-valid': correo.valid}"
+                placeholder="ejemplo@gmail.com" formControlName="correo" required>
+                <div class="invalid-feedback login-feedback" *ngIf="correo.errors">
+                    <span *ngIf="correo.errors.pattern">Correo Inválido</span>
+                    <span *ngIf="correo.errors.required && (responseRegistro.code != 0)">Este campo no puede quedar vacío</span>
+                    <span *ngIf="responseRegistro.code == 0">{{responseRegistro.message}}</span>
                 </div>
             </div>
             <div>
@@ -59,33 +60,31 @@
             </div>
             <div>
                 <h5>Ciudad</h5>
-                <select class="form-select" aria-label="Default select example" formControlName="city" required
-                [ngClass]="{'is-invalid': city.invalid && (city.dirty || city.touched), 'is-valid': city.valid}">
+                <select class="form-select" aria-label="Default select example" formControlName="ciudad" required
+                [ngClass]="{'is-invalid': ciudad.invalid && (ciudad.dirty || ciudad.touched), 'is-valid': ciudad.valid}">
                     <option selected disabled >Seleccione</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                    <option *ngFor="let ciudad of ciudades" [ngValue]="ciudad.idCiudad">{{ciudad.ciudad}}</option>
                 </select>
-                <div class="invalid-feedback login-feedback" *ngIf="city.errors">
-                    <span *ngIf="city.errors.required">Este campo no puede quedar vacío</span>
+                <div class="invalid-feedback login-feedback" *ngIf="ciudad.errors">
+                    <span *ngIf="ciudad.errors.required">Este campo no puede quedar vacío</span>
                 </div>
             </div>
             <div>
                 <h5>Fecha de nacimiento</h5>
-                <input type="date" class="form-control inp-form" formControlName="birthday" required
-                [ngClass]="{'is-invalid': birthday.invalid && (birthday.dirty || birthday.touched), 'is-valid': birthday.valid}">
-                <div class="invalid-feedback login-feedback" *ngIf="birthday.errors">
-                    <span *ngIf="birthday.errors.required">Este campo no puede quedar vacío</span>
+                <input type="date" class="form-control inp-form" formControlName="fechaNacimiento" required
+                [ngClass]="{'is-invalid': fechaNacimiento.invalid && (fechaNacimiento.dirty || fechaNacimiento.touched), 'is-valid': fechaNacimiento.valid}">
+                <div class="invalid-feedback login-feedback" *ngIf="fechaNacimiento.errors">
+                    <span *ngIf="fechaNacimiento.errors.required">Este campo no puede quedar vacío</span>
                 </div>
             </div>
             <h5>Género</h5> 
             <div class="chk-form">
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" formControlName="gender" [value]="true" name="gender" id="genderMale" required>
+                    <input class="form-check-input" type="radio" formControlName="genero" [value]="true" name="genero" id="genderMale" required>
                     <label class="form-check-label" for="genderMale">Masculino</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" formControlName="gender" [value]="false" name="gender" id="genderFemale" required>
+                    <input class="form-check-input" type="radio" formControlName="genero" [value]="false" name="genero" id="genderFemale" required>
                     <label class="form-check-label" for="genderFemale">Femenino</label>
                 </div>
             </div><br>
@@ -97,8 +96,11 @@
                     </label>
                 </div>
             </div>
-            <button [disabled]="formRegister.invalid || (password.value != confirmPassword.value)"
-            type="button" class="btn btn-success" id="btn-login" routerLink="/home">Registrarse</button>
+            <button [disabled]="formRegistro.invalid || (password.value != confirmPassword.value)"
+            type="button" class="btn btn-success" id="btn-login" (click)="registrar()">Registrarse</button>
+            <div class="registro-add-response">
+                <span *ngIf="responseRegistro.code == 0">{{responseRegistro.message}}</span>
+            </div>
             <h6>¿Ya tienes una cuenta?</h6>
             <a routerLink="/login" id="registro">Inicia sesión</a>
         </div>

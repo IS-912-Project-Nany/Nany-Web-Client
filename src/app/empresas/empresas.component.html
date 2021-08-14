@@ -1,14 +1,15 @@
 <app-navbar></app-navbar>
 <div id="companyContainer" class="container pb-5">
     <div class="row">
-        <h4 class="text-center mt-4">Elige la empresa de comida rapida</h4>
-        <a *ngFor="let company of companies" routerLink="/productos" class="col-6 mr-1 mt-4">
+        <h4 class="text-center mt-4">Elige la empresa de {{this.categoria.nombre}}</h4>
+        <a *ngFor="let empresa of empresas" [routerLink]="[empresa._id, 'productos']" class="col-6 mr-1 mt-4">
             <div class="card">
                 <div class="card-body">
-                    <img class="card-company-landing" :src={{company.logo}} alt="">
+                    <img class="card-company-landing" :src={{empresa.logo}} alt="">
                 </div>
             </div>
         </a>
     </div>
 </div>
 <app-footer></app-footer>
+<ngx-spinner *ngIf="isLoading" bdColor = "rgba(255,255,255,0.8)" size = "large" color = "#a6032f" type = "square-jelly-box" [fullScreen] = "true"></ngx-spinner>

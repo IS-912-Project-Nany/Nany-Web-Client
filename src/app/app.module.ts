@@ -13,14 +13,14 @@ import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
-import { CategoryComponent } from './category/category.component';
-import { CompanyComponent } from './company/company.component';
-import { ProfileComponent } from './profile/profile.component';
-import { RegisterComponent } from './register/register.component';
-import { ProductComponent } from './product/product.component';
+import { CategoriasComponent } from './categorias/categorias.component';
+import { EmpresasComponent } from './empresas/empresas.component';
+import { PerfilComponent } from './perfil/perfil.component';
+import { RegistroComponent } from './registro/registro.component';
+import { ProductosComponent } from './productos/productos.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { MapComponent } from './map/map.component';
-import { ButtonAddProductComponent } from './product/button-add-product/button-add-product.component';
+import { ButtonAddProductoComponent } from './productos/button-add-producto/button-add-producto.component';
 
 @NgModule({
   declarations: [
@@ -29,14 +29,14 @@ import { ButtonAddProductComponent } from './product/button-add-product/button-a
     NavbarComponent,
     LoginComponent,
     LandingPageComponent,
-    CategoryComponent,
-    CompanyComponent,
-    ProfileComponent,
-    RegisterComponent,
-    ProductComponent,
+    CategoriasComponent,
+    EmpresasComponent,
+    PerfilComponent,
+    RegistroComponent,
+    ProductosComponent,
     CheckoutComponent,
     MapComponent,
-    ButtonAddProductComponent
+    ButtonAddProductoComponent
   ],
   imports: [
     BrowserModule,

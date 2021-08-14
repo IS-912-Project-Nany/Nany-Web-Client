@@ -5,10 +5,10 @@ import { CookieService } from 'ngx-cookie-service';
 import { UsuariosService } from '../services/usuarios.service';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html'
+  selector: 'app-registro',
+  templateUrl: './registro.component.html'
 })
-export class RegisterComponent implements OnInit {
+export class RegistroComponent implements OnInit {
   formRegistro = new FormGroup({
     nombre: new FormControl ('', [Validators.required, Validators.maxLength(30)]),
     apellido: new FormControl ('', [Validators.required, Validators.maxLength(30)]),
@@ -96,7 +96,7 @@ export class RegisterComponent implements OnInit {
             dateNow
           );
 
-          this._route.navigate(['/home']);
+          this._route.navigate(['/categorias']);
         }
         console.log(result);
       },

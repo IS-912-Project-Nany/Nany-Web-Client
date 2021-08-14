@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit {
             dateNow
           );
           console.log('Logeado con exito');
-          this._route.navigate(['/home']);
+          this._route.navigate(['/categorias']);
         } else if (result.code == 2) {
           // Contrasenia Incorrecta
           this.responseLoggin = result;

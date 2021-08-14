@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-company',
-  templateUrl: './company.component.html',
+  selector: 'app-empresas',
+  templateUrl: './empresas.component.html',
 })
-export class CompanyComponent implements OnInit {
+export class EmpresasComponent implements OnInit {
   companies = [
     {
       name: 'Little Caesars',

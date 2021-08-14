@@ -2,23 +2,23 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { LandingPageComponent } from './landing-page/landing-page.component';
-import { CategoryComponent } from './category/category.component';
+import { CategoriasComponent } from './categorias/categorias.component';
 import { CheckoutComponent } from './checkout/checkout.component';
-import { CompanyComponent } from './company/company.component';
+import { EmpresasComponent } from './empresas/empresas.component';
 import { LoginComponent } from './login/login.component';
-import { ProductComponent } from './product/product.component';
-import { ProfileComponent } from './profile/profile.component';
-import { RegisterComponent } from './register/register.component';
+import { ProductosComponent } from './productos/productos.component';
+import { PerfilComponent } from './perfil/perfil.component';
+import { RegistroComponent } from './registro/registro.component';
 
 const routes: Routes = [
   {path: '', component: LandingPageComponent},
-  {path: 'home', component: CategoryComponent},
+  {path: 'categorias', component: CategoriasComponent},
   {path: 'checkout', component: CheckoutComponent},
-  {path: 'company', component: CompanyComponent},
+  {path: 'empresas', component: EmpresasComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'product', component: ProductComponent},
-  {path: 'profile', component: ProfileComponent},
-  {path: 'register', component: RegisterComponent},
+  {path: 'productos', component: ProductosComponent},
+  {path: 'perfil', component: PerfilComponent},
+  {path: 'registro', component: RegistroComponent},
   {path: '**', pathMatch: 'full', redirectTo: ''}
 ];
 

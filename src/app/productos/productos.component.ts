@@ -4,10 +4,10 @@ import { faStar as fasStar } from '@fortawesome/free-solid-svg-icons';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 
 @Component({
-  selector: 'app-product',
-  templateUrl: './product.component.html',
+  selector: 'app-productos',
+  templateUrl: './productos.component.html',
 })
-export class ProductComponent implements OnInit {
+export class ProductosComponent implements OnInit {
   company = {
     name: "Wendy's",
     description:

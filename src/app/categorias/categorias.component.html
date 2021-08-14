@@ -1,0 +1,15 @@
+<app-navbar></app-navbar>
+<div id="categoryContainer" class="container">
+    <div class="row">
+        <h4 class="text-center mt-4">Elige una categoría</h4>
+        <a *ngFor="let categoria of categorias" routerLink="/empresas" class="col-6 mr-1 mt-4">
+            <div class="card" :style="background-color:{{categoria.color}}">
+                <div class="card-body">
+                    <h5 class="card-title-category">{{categoria.nombre}}</h5>
+                    <img class="card-body-category" :src={{categoria.icono}} alt="">
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+<app-footer></app-footer>

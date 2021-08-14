@@ -3,13 +3,12 @@ import { CookieService } from 'ngx-cookie-service';
 import { UsuariosService } from '../services/usuarios.service';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { UploadService } from '../services/upload.service';
-import { convertTypeAcquisitionFromJson } from 'typescript';
 
 @Component({
-  selector: 'app-profile',
-  templateUrl: './profile.component.html',
+  selector: 'app-perfil',
+  templateUrl: './perfil.component.html',
 })
-export class ProfileComponent implements OnInit {
+export class PerfilComponent implements OnInit {
   faCheck = faCheck;
   usuario: any = '';
   file: File = null;

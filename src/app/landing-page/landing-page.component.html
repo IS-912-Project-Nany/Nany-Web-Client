@@ -27,7 +27,8 @@
     </div>
     <div class="carousel-info">
       <h1>Realizamos entregas de todo lo que tu necesitas.</h1>
-      <button class="btn btn-primary"  routerLink="/login" type="button">Ordena ya</button>
+      <button *ngIf="!isLogged" class="btn btn-primary"  routerLink="/login" type="button">Ordena ya</button>
+      <button *ngIf="isLogged" class="btn btn-primary"  routerLink="/categorias" type="button">Ordena ya</button>
     </div>
   </div>
   

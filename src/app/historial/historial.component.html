@@ -1,0 +1,93 @@
+
+<app-navbar></app-navbar>
+<div id="historialContainer" class="container pb-5">
+    <h3 class="text-center my-4">Mis compras realizadas</h3>
+    <div id="historial">
+        <div *ngFor="let order of orders" class="row">
+            <h3 class="text-initial mt-2">{{order.date}}</h3>
+            <hr>
+            <div class="col-8 mt-2">
+                <h5>{{order.productName}}</h5>
+                <h6> Comprador: {{order.buyer}}</h6>
+                <h6>Total de Factura: L. {{order.total}}</h6>
+                <h6>Destino: {{order.destination}}</h6>
+            </div>
+            <div class="col-4 mb-2">
+                <a data-bs-toggle="modal" data-bs-target="#modalInvoice" class="col-4 mb-2">
+                    <img class="d-block img-historial" :src="{{order.imgOrder}}" alt="">
+                </a>
+                <button class="d-block btn btn-state-order" :style="background-color:{{order.state.color}}"
+                    type="button">{{order.state.name}}</button>
+            </div>
+            <hr>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalInvoice" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <img src="../assets/logos/Logo-Nany-trans-1.png" id="logo">
+            </div>
+            <div class="modal-body container">
+                <h3 class="text-center">Factura</h3>
+                <table class="table mt-3">
+                    <thead>
+                        <tr>
+                            <th scope="col">Producto</th>
+                            <th scope="col">Precio</th>
+                            <th scope="col">Envío</th>
+                            <th scope="col">ISV</th>
+                            <th scope="col">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="invoice-description">Wendy´s Pack =1 HAM, 1 REF 1.25L, 1 PAPAS MED</td>
+                            <td class="invoice-cost">L.100.00</td>
+                            <td class="invoice-cost">L.100.00</td>
+                            <td class="invoice-cost">L.100.00</td>
+                            <td class="invoice-cost">L.100.00</td>
+                        </tr>
+                        <tr>
+                            <td class="invoice-description">Wendy´s Pack =1 HAM, 1 REF 1.25L, 1 PAPAS MED</td>
+                            <td class="invoice-cost">L.100.00</td>
+                            <td class="invoice-cost">L.100.00</td>
+                            <td class="invoice-cost">L.100.00</td>
+                            <td class="invoice-cost">L.100.00</td>
+                        </tr>
+                        <tr>
+                            <td class="invoice-description">Wendy´s Pack =1 HAM, 1 REF 1.25L, 1 PAPAS MED</td>
+                            <td class="invoice-cost">L.100.00</td>
+                            <td class="invoice-cost">L.100.00</td>
+                            <td class="invoice-cost">L.100.00</td>
+                            <td class="invoice-cost">L.100.00</td>
+                        </tr>
+                        <tr>
+                            <td class="invoice-description">Wendy´s Pack =1 HAM, 1 REF 1.25L, 1 PAPAS MED</td>
+                            <td class="invoice-cost">L.100.00</td>
+                            <td class="invoice-cost">L.100.00</td>
+                            <td class="invoice-cost">L.100.00</td>
+                            <td class="invoice-cost">L.100.00</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>Total:</th>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="invoice-cost">L.100.00</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-modal" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

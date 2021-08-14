@@ -9,6 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { ProductosComponent } from './productos/productos.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { RegistroComponent } from './registro/registro.component';
+import { HistorialComponent } from './historial/historial.component';
 
 const routes: Routes = [
   {path: '', component: LandingPageComponent},
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'categorias/:idCategoria/empresas/:_id/productos', component: ProductosComponent},
   {path: 'perfil', component: PerfilComponent},
+  {path: 'historial', component: HistorialComponent},
   {path: 'registro', component: RegistroComponent},
   {path: '**', pathMatch: 'full', redirectTo: ''}
 ];

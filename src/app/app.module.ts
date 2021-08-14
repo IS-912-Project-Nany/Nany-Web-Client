@@ -21,6 +21,7 @@ import { ProductosComponent } from './productos/productos.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { MapComponent } from './map/map.component';
 import { ButtonAddProductoComponent } from './productos/button-add-producto/button-add-producto.component';
+import { HistorialComponent } from './historial/historial.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { ButtonAddProductoComponent } from './productos/button-add-producto/butt
     ProductosComponent,
     CheckoutComponent,
     MapComponent,
-    ButtonAddProductoComponent
+    ButtonAddProductoComponent,
+    HistorialComponent
   ],
   imports: [
     BrowserModule,

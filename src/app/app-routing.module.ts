@@ -14,9 +14,9 @@ const routes: Routes = [
   {path: '', component: LandingPageComponent},
   {path: 'categorias', component: CategoriasComponent},
   {path: 'checkout', component: CheckoutComponent},
-  {path: 'empresas', component: EmpresasComponent},
+  {path: 'categorias/:_id/empresas', component: EmpresasComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'productos', component: ProductosComponent},
+  {path: 'categorias/:idCategoria/empresas/:_id/productos', component: ProductosComponent},
   {path: 'perfil', component: PerfilComponent},
   {path: 'registro', component: RegistroComponent},
   {path: '**', pathMatch: 'full', redirectTo: ''}

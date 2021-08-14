@@ -16,6 +16,7 @@ export class ProfileComponent implements OnInit {
   formData = new FormData();
   inputFile: boolean = true;
   buttonFile: boolean = false;
+  isLoading: boolean = false;
   ciudades = [
     { idCiudad: 1, ciudad: 'Choluteca'},
     { idCiudad: 2, ciudad: 'Comayagua'},
@@ -68,12 +69,14 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.cookieService.check('nanyUsuarioId')) {
+      this.isLoading = true;
       this.usuariosService.obtenerUsuario(this.cookieService.get('nanyUsuarioId')).subscribe(
         result => {
           let fecha = result.fechaNacimiento.split('T');
           result.fechaNacimiento = fecha[0];
           this.usuario = result;
           console.log(result);
+          this.isLoading = false;
         },
         error => {
           console.log(error);
@@ -89,6 +92,7 @@ export class ProfileComponent implements OnInit {
   }
 
   onUpload() {
+    this.isLoading = true;
     this.formData.append("imagen", this.file);
     this.formData.append("folder", 'usuarios');
     this.uploadService.subirImagen(this.formData).subscribe(
@@ -136,6 +140,7 @@ export class ProfileComponent implements OnInit {
     this.usuariosService.actualizarUsuario(this.usuario._id, this.obtenerData()).subscribe(
       result => {
         console.log(result);
+        this.isLoading = false;
       },
       error => {
         console.log(error);

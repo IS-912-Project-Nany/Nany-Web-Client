@@ -21,6 +21,7 @@ export class RegisterComponent implements OnInit {
   });
   confirmPassword = new FormControl('',[Validators.required]);
   responseRegistro: any = '';
+  isLoading: boolean = false;
   ciudades = [
     { idCiudad: 1, ciudad: 'Choluteca'},
     { idCiudad: 2, ciudad: 'Comayagua'},
@@ -52,6 +53,7 @@ export class RegisterComponent implements OnInit {
   }
 
   registrar() {
+    this.isLoading = true;
     let ciudadSeleccionada: any = {};
     this.ciudades.forEach(ciudad => {
       if(this.formRegistro.value.ciudad == ciudad.idCiudad){
@@ -102,6 +104,7 @@ export class RegisterComponent implements OnInit {
         console.log(error);
       }
     );
+    this.isLoading = true;
   }
 
   get nombre(){

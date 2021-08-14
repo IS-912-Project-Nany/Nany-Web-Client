@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { AuthService } from '../services/auth.service';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-login',
@@ -21,17 +22,21 @@ export class LoginComponent implements OnInit {
       Validators.minLength(8),
     ]),
   });
-
+  isLoading: boolean = false;
   responseLoggin: any = '';
   constructor(
     private authService: AuthService,
     private cookiesService: CookieService,
+    private spinner: NgxSpinnerService,
     private _route:Router
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.spinner.show();
+  }
 
   login() {
+    this.isLoading = true;
     console.log('El usuario a autenticar:', this.formLogin);
     this.authService.login(this.formLogin.value).subscribe(
       (result) => {
@@ -60,6 +65,7 @@ export class LoginComponent implements OnInit {
           this.responseLoggin = result;
           this.correo.setValue('');
         }
+        this.isLoading = false;
         console.log(result.message);
       },
       (error) => {

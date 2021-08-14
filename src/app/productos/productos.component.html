@@ -2,34 +2,34 @@
 <div class="container">
     <a class="row product-company pt-2" data-bs-toggle="modal" data-bs-target="#modalCompany">
         <div class="col-4 product-img-company">
-            <img :src={{company.logo}} alt="">
+            <img :src={{empresa.logo}} alt="">
         </div>
         <div class="col-8">
-            <h4>{{company.name}}</h4>
-            <p>{{company.abstract}}</p>
-            <fa-icon *ngFor="let i of ' '.repeat(company.rating).split(''), let x = index" class="product-start"
+            <h4>{{empresa.nombre}}</h4>
+            <p>{{empresa.resumen}}</p>
+            <fa-icon *ngFor="let i of ' '.repeat(empresa.calificacion).split(''), let x = index" class="product-start"
                 [icon]="['fas', 'star']"></fa-icon>
-            <fa-icon *ngFor="let i of ' '.repeat(5-company.rating).split(''), let x = index" class="product-start"
+            <fa-icon *ngFor="let i of ' '.repeat(5-empresa.calificacion).split(''), let x = index" class="product-start"
                 [icon]="['far', 'star']"></fa-icon>
             <img class="product-touch-company" src="../../assets/iconos/IconTouch-trans.png" alt="">
         </div>
     </a>
 </div>
 
-<h4 class="text-center mt-4">Productos</h4>
+<h4 class="text-center mt-4">Productos de {{empresa.nombre}}</h4>
 <div class="products-landing">
     <div class="container">
         <div class="row">
-            <div *ngFor="let product of products" class="col-12">
+            <div *ngFor="let producto of productos" class="col-12">
                 <div class="carousel-item-bg">
-                    <img :src={{product.image}} class="products-carousel-landing d-block " alt="...">
+                    <img :src={{producto.imagen}} class="products-carousel-landing d-block " alt="...">
                 </div>
-                <p class="products-title-landing text-center">{{product.name}}</p>
-                <p class="products-price-landing text-center">L. {{product.price}}</p>
+                <p class="products-title-landing text-center">{{producto.nombre}}</p>
+                <p class="products-price-landing text-center">L. {{producto.precio}}</p>
                 <app-button-add-producto></app-button-add-producto>
                 <button type="button" class="btn-primary products-btn-car" routerLink="/checkout">Agregar al
                     Carrito</button>
-                <button type="button" class="btn-secondary products-btn-details" data-bs-toggle="modal"
+                <button type="button" class="btn-secondary products-btn-details" (click)="detalleProductoModal(producto)" data-bs-toggle="modal"
                     data-bs-target="#modalProductDetails">Ver Detalles</button>
             </div>
         </div>
@@ -39,19 +39,19 @@
 <!--Modal Product Details-->
 <div class="modal fade" id="modalProductDetails" tabindex="-1">
     <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal-content" *ngIf="detalleProducto != ''">
             <div class="modal-header-company">
-                <img src="../../assets/img/banners/banner-wendys.jpg" alt="">
+                <img [src]="empresa.banner" alt="">
             </div>
             <div class="modal-body modal-body-product">
-                <p class="text-center">Coca Cola Vidrio 1/4li</p>
-                <img src="../../assets/img/products/Coca-Cola-bebida.webp" alt="">
+                <p class="text-center">{{detalleProducto.nombre}}</p>
+                <img [src]="detalleProducto.imagen" alt="">
                 <hr>
                 <p class="text-center">
-                    Coca Cola Vidrio, tamaño 25cm. Vidrio reutilizable.
+                    {{detalleProducto.nombre}}, {{detalleProducto.descripcion}}
                 </p>
                 <hr>
-                <p class="text-center">Costo: L. 10.00</p>
+                <p class="text-center">Costo: L. {{detalleProducto.precio}}</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary float-center" data-bs-dismiss="modal">Cerrar</button>
@@ -65,25 +65,25 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header-company">
-                <img :src={{company.banner}} alt="">
+                <img :src={{empresa.banner}} alt="">
             </div>
             <div class="modal-body">
-                <h4 class="text-center">{{company.name}}</h4>
-                <p class="text-justify mt-4">{{company.description}}</p>
+                <h4 class="text-center">{{empresa.nommbre}}</h4>
+                <p class="text-justify mt-4">{{empresa.descripcion}}</p>
                 <hr>
                 <p class="text-initial">Estamos ubicados en: <br />
-                    {{company.location}}
+                    {{empresa.ubicacion}}
                 </p>
                 <hr>
                 <p>
                     Horario de Atención: <br />
-                    {{company.schedule}}
+                    {{empresa.horario}}
                 </p>
                 <hr>
                 <label class="mr-2">Calificación: </label>
-                <fa-icon *ngFor="let i of ' '.repeat(company.rating).split(''), let x = index" class="product-start"
+                <fa-icon *ngFor="let i of ' '.repeat(empresa.calificacion).split(''), let x = index" class="product-start"
                     [icon]="['fas', 'star']"></fa-icon>
-                <fa-icon *ngFor="let i of ' '.repeat(5-company.rating).split(''), let x = index" class="product-start"
+                <fa-icon *ngFor="let i of ' '.repeat(5-empresa.calificacion).split(''), let x = index" class="product-start"
                     [icon]="['far', 'star']"></fa-icon>
             </div>
             <div class="modal-footer">

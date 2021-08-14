@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { faStar as farStar } from '@fortawesome/free-regular-svg-icons';
 import { faStar as fasStar } from '@fortawesome/free-solid-svg-icons';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { ActivatedRoute } from '@angular/router';
+import { ProductosService } from '../services/productos.service';
+import { EmpresasService } from '../services/empresas.service';
 
 @Component({
   selector: 'app-productos',
@@ -19,7 +22,6 @@ export class ProductosComponent implements OnInit {
     banner: '../../assets/img/banners/banner-wendys.jpg',
     rating: 4,
   };
-
   products = [
     {
       name: 'Coca Cola Vidrio',
@@ -46,8 +48,47 @@ export class ProductosComponent implements OnInit {
       image: '../assets/img/products/Coca-Cola-bebida.webp',
     },
   ];
-  constructor(library: FaIconLibrary) {
+
+  idCategoria: String = '';
+  idEmpresa: String = '';
+  empresa: any = '';
+  productos:any = [];
+  detalleProducto: any = '';
+  constructor(
+    library: FaIconLibrary,
+    private ruta: ActivatedRoute,
+    private productosService: ProductosService,
+    private empresasService: EmpresasService
+    ) {
     library.addIcons(fasStar, farStar);
+    this.ruta.params.subscribe(params => {
+      this.idCategoria = params.idCategoria;
+      this.idEmpresa = params._id;
+    })
   }
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.productosService.obtenerProductos(this.idCategoria, this.idEmpresa).subscribe(
+      result => {
+        console.log(result);
+        this.productos = result;
+      },
+      error => {
+        console.log(error);
+      }
+    );
+
+    this.empresasService.obtenerEmpresa(this.idCategoria, this.idEmpresa).subscribe(
+      result => {
+        this.empresa = result.empresas[0];
+        console.log(this.empresa);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
+  detalleProductoModal(producto) {
+    this.detalleProducto = producto;
+  }
 }

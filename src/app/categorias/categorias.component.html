@@ -2,7 +2,7 @@
 <div id="categoryContainer" class="container">
     <div class="row">
         <h4 class="text-center mt-4">Elige una categoría</h4>
-        <a *ngFor="let categoria of categorias" routerLink="/empresas" class="col-6 mr-1 mt-4">
+        <a *ngFor="let categoria of categorias" [routerLink]="[categoria._id, 'empresas']" class="col-6 mr-1 mt-4">
             <div class="card" :style="background-color:{{categoria.color}}">
                 <div class="card-body">
                     <h5 class="card-title-category">{{categoria.nombre}}</h5>
@@ -13,3 +13,4 @@
     </div>
 </div>
 <app-footer></app-footer>
+<ngx-spinner *ngIf="isLoading" bdColor = "rgba(255,255,255,0.8)" size = "large" color = "#a6032f" type = "square-jelly-box" [fullScreen] = "true"></ngx-spinner>

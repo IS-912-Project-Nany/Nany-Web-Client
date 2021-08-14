@@ -105,13 +105,16 @@ export class CategoriasComponent implements OnInit {
   //   }
   // ];
   categorias: any = [];
+  isLoading:boolean = false;
   constructor(private categoriasServices: CategoriasService) {}
 
   ngOnInit(): void {
     this.scrollToTop();
+    this.isLoading = true;
     this.categoriasServices.obtenerCategorias().subscribe(
       result => {
         this.categorias = result;
+        this.isLoading = false;
       },
       error => {
         console.log(error);

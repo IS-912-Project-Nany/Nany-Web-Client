@@ -1,4 +1,4 @@
-<app-navbar></app-navbar>
+<app-navbar #navbar></app-navbar>
 <div class="container">
     <a class="row product-company pt-2" data-bs-toggle="modal" data-bs-target="#modalCompany">
         <div class="col-4 product-img-company">
@@ -26,8 +26,8 @@
                 </div>
                 <p class="products-title-landing text-center">{{producto.nombre}}</p>
                 <p class="products-price-landing text-center">L. {{producto.precio}}</p>
-                <app-button-add-producto></app-button-add-producto>
-                <button type="button" class="btn-primary products-btn-car" routerLink="/checkout">Agregar al
+                <app-button-add-producto (onChange)="verCantidad($event)"></app-button-add-producto>
+                <button type="button" class="btn-primary products-btn-car" (click)="agregarCarrito(producto)">Agregar al
                     Carrito</button>
                 <button type="button" class="btn-secondary products-btn-details" (click)="detalleProductoModal(producto)" data-bs-toggle="modal"
                     data-bs-target="#modalProductDetails">Ver Detalles</button>

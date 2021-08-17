@@ -1,64 +1,36 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { faStar as farStar } from '@fortawesome/free-regular-svg-icons';
 import { faStar as fasStar } from '@fortawesome/free-solid-svg-icons';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProductosService } from '../services/productos.service';
 import { EmpresasService } from '../services/empresas.service';
+import Swal from 'sweetalert2';
+import { CookieService } from 'ngx-cookie-service';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 @Component({
   selector: 'app-productos',
   templateUrl: './productos.component.html',
 })
 export class ProductosComponent implements OnInit {
-  company = {
-    name: "Wendy's",
-    description:
-      'La marca Wendy´s se caracteriza por su espíritu innovador lo cual va desde nuevos productos y lanzamientos hasta las mejoras de image de las instalaciones que son frecuentes para tener una marca renovada',
-    abstract: 'Restaurante de comida rápida y hamburguesería',
-    logo: '../../assets/img/companies/empresa-wendys.jpg',
-    schedule: 'Lunes a Viernes: 8:00am a 10:00pm \n Sábados y Domingos: 10:00am a 3:00pm \n',
-    location: 'Blvd Morazan Mall Multiplaza Plaza Miraflores',
-    banner: '../../assets/img/banners/banner-wendys.jpg',
-    rating: 4,
-  };
-  products = [
-    {
-      name: 'Coca Cola Vidrio',
-      description: 'tamaño 25cm. Vidrio reutilizable.',
-      isv: 5.0,
-      price: 10.0,
-      stock: 10,
-      image: '../assets/img/products/Coca-Cola-bebida.webp',
-    },
-    {
-      name: 'Coca Cola Vidrio',
-      description: 'tamaño 25cm. Vidrio reutilizable.',
-      isv: 5.0,
-      price: 10.00,
-      stock: 10,
-      image: '../assets/img/products/Coca-Cola-bebida.webp',
-    },
-    {
-      name: 'Coca Cola Vidrio',
-      description: 'tamaño 25cm. Vidrio reutilizable.',
-      isv: 5.0,
-      price: 10.0,
-      stock: 10,
-      image: '../assets/img/products/Coca-Cola-bebida.webp',
-    },
-  ];
-
+  @ViewChild('navbar') navbarComponent: NavbarComponent
   idCategoria: String = '';
   idEmpresa: String = '';
+  nombreCategoria: String = '';
   empresa: any = '';
   productos:any = [];
   detalleProducto: any = '';
+  cantidadProducto: any = '';
+  
+
   constructor(
     library: FaIconLibrary,
     private ruta: ActivatedRoute,
+    private _route: Router,
     private productosService: ProductosService,
-    private empresasService: EmpresasService
+    private empresasService: EmpresasService,
+    private cookiesService: CookieService
     ) {
     library.addIcons(fasStar, farStar);
     this.ruta.params.subscribe(params => {
@@ -80,7 +52,7 @@ export class ProductosComponent implements OnInit {
     this.empresasService.obtenerEmpresa(this.idCategoria, this.idEmpresa).subscribe(
       result => {
         this.empresa = result.empresas[0];
-        console.log(this.empresa);
+        this.nombreCategoria = result.nombre;
       },
       error => {
         console.log(error);
@@ -90,5 +62,52 @@ export class ProductosComponent implements OnInit {
 
   detalleProductoModal(producto) {
     this.detalleProducto = producto;
+  }
+
+  verCantidad(cantidad) {
+    this.cantidadProducto = cantidad;
+    console.log("Cantidad Producto ", this.cantidadProducto);
+  }
+
+  agregarCarrito(producto) {
+    if (this.cookiesService.check('nanyUsuarioId')) {
+      const localStorage = window.localStorage;     
+      let productos:any = [];
+      let productoEnviar = {
+        nombre: producto.nombre,
+        descripcion: producto.descripcion,
+        categoria: this.nombreCategoria,
+        empresa: this.empresa.nombre,
+        imagen: producto.imagen,
+        precio: producto.precio,
+        isv: producto.isv,
+      }
+      
+      let detalleProducto = {
+        producto: productoEnviar,
+        cantidad: this.cantidadProducto
+      }
+ 
+      if (localStorage.getItem('productosCarrito' + this.cookiesService.get('nanyUsuarioNombre')) != undefined) {
+        productos = JSON.parse(localStorage.getItem('productosCarrito' + this.cookiesService.get('nanyUsuarioNombre')));
+        productos.push(detalleProducto);
+        localStorage.setItem('productosCarrito' + this.cookiesService.get('nanyUsuarioNombre'), JSON.stringify(productos));
+      } else {
+        productos.push(detalleProducto);
+        localStorage.setItem('productosCarrito' + this.cookiesService.get('nanyUsuarioNombre'), JSON.stringify(productos));
+      }
+      this.navbarComponent.ngOnInit();
+      Swal.fire({
+        icon: 'success',
+        title: 'Producto Agregado al carrito',
+        text: 'Revisa tu carrito de compras.',
+      })
+    } else {
+      Swal.fire({
+        icon: 'info',
+        text: 'Inicia sesión para poder agregar al carrito.',
+      })
+      this._route.navigate(['/login']);
+    }
   }
 }

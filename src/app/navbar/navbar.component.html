@@ -1,6 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <img src="../../assets/logos/Logo-Nany-trans-1.png" routerLink="/home"  id="img-logo">
+    <img class="fa-shooping" src="../../assets/iconos/shopping-cart-icon.png" *ngIf="usuario != ''" routerLink="/checkout" alt="" srcset="">
+    <span class="span-shooping-qty" *ngIf="cantidadProductosCarrito != 0" >{{cantidadProductosCarrito}}</span>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>

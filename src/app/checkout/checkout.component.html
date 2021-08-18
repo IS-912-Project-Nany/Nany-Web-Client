@@ -11,11 +11,11 @@
             <button id="btnShoppingCar" type="button">1</button>
             <p for="btnShoppingCar">Carrito de Compras</p>
         </div>
-        <div class="bc-body bc-checkout-disable">
-            <button id="btnShoppingCar" type="button">2</button>
+        <div class="bc-body bc-checkout-disable" [ngClass]="{'bc-checkout-active': (region == 'checkout' || region == 'completa'), 'bc-checkout-disable': (region != 'checkout' && region != 'completa')}" >
+            <button id="btnShoppingCar"type="button">2</button>
             <p for="btnShoppingCar">Checkout</p>
         </div>
-        <div class="bc-body bc-checkout-disable">
+        <div class="bc-body bc-checkout-disable" [ngClass]="{'bc-checkout-active': region == 'completa', 'bc-checkout-disable': region != 'completa'}">
             <button id="btnShoppingCar" type="button">3</button>
             <p for="btnShoppingCar">Completar Orden</p>
         </div>
@@ -23,84 +23,53 @@
 </div>
 
 <!--Shooping Car Section-->
-<div id="ShoopingCarSection" class="d-none">
+<div id="ShoopingCarSection" [ngClass]="{'d-block': region == 'carrito', 'd-none': region != 'carrito'}">
     <!--Title Section-->
     <div class="title-banner-chck">
         <label>Carrito de Compras</label>
     </div>
 
     <!--Car Items Added-->
-    <div class="container">
+    <div class="container" *ngIf="productosCarrito != []">
         <div class="row">
-            <div class="card-item-car mb-3 mt-2">
-                <button type="button" class="btn-close" aria-label="Close"></button>
+            <!-- Producto Card -->
+            <div class="card-item-car mb-3 mt-2" *ngFor="let item of productosCarrito; let i = index">
+                <button type="button" (click)="eliminarProductoLS(i)" class="btn-close" aria-label="Close"></button>
                 <hr>
                 <div class="card-item-title">
-                    <label>Producto</label>
+                    <label>{{item.producto.nombre}}</label>
                 </div>
                 <div class="card-item-description">
-                    <p>Wendy´s Pack =1 HAM, 1 REF 1.25L, 1 PAPAS MED</p>
+                    <p>{{item.producto.descripcion}}</p>
                     <small class="cost-title">Precio Unitario:</small>
-                    <small class="cost-details">L. 20.00</small>
+                    <small class="cost-details">L. {{item.producto.precio | number : '1.2-2'}}</small>
                     <small class="cost-title">ISV:</small>
-                    <small class="cost-details">+ L. 5.00</small>
-                    <small class="cost-title">Envío:</small>
-                    <small class="cost-details">+ L. 51.00</small>
+                    <small class="cost-details">+ L. {{item.producto.isv | number : '1.2-2'}}</small>
                 </div>
                 <hr>
                 <div class="card-item-title mt-2">
                     <label>Cantidad</label>
                 </div>
                 <div class="card-item-quantity">
-                    <input type="number" min="0">
+                    <input [(ngModel)]="item.cantidad" type="number" min="0">
                 </div>
                 <hr>
                 <div class="card-item-title mt-1">
                     <label>Total</label>
                 </div>
                 <div class="card-item-description">
-                    <h6 class="cost-total">L. 51.00</h6>
-                </div>
-            </div>
-            <div class="card-item-car mb-3 mt-2">
-                <button type="button" class="btn-close" aria-label="Close"></button>
-                <hr>
-                <div class="card-item-title">
-                    <label>Producto</label>
-                </div>
-                <div class="card-item-description">
-                    <p>Wendy´s Pack =1 HAM, 1 REF 1.25L, 1 PAPAS MED</p>
-                    <small class="cost-title">Precio Unitario:</small>
-                    <small class="cost-details">L. 20.00</small>
-                    <small class="cost-title">ISV:</small>
-                    <small class="cost-details">+ L. 5.00</small>
-                    <small class="cost-title">Envío:</small>
-                    <small class="cost-details">+ L. 51.00</small>
-                </div>
-                <hr>
-                <div class="card-item-title mt-2">
-                    <label>Cantidad</label>
-                </div>
-                <div class="card-item-quantity">
-                    <input type="number" min="0">
-                </div>
-                <hr>
-                <div class="card-item-title mt-1">
-                    <label>Total</label>
-                </div>
-                <div class="card-item-description">
-                    <h6 class="cost-total">L. 51.00</h6>
+                    <h6 class="cost-total">L. {{((item.producto.precio + item.producto.isv) * item.cantidad) | number : '1.2-2'}}</h6>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="title-banner-chck">
+    <div class="title-banner-chck" >
         <label>Total del Carrito</label>
     </div>
 
     <!--Total Products Shooping-Car-->
-    <div class="container">
+    <div class="container" *ngIf="totalTemp != null && productosCarrito != []" >
         <div class="row">
             <div class="card-item-car mb-3 mt-2">
                 <hr>
@@ -108,19 +77,19 @@
                     <label>Total</label>
                 </div>
                 <div class="card-item-description">
-                    <h6 class="cost-total">L. 51.00</h6>
+                    <h6 class="cost-total">L. {{totalTemp | number : '1.2-2'}}</h6>
                 </div>
             </div>
         </div>
     </div>
 
-    <button type="button" class="btn-check-continue mt-5">Checkout</button>
-    <button type="button" class="btn-check-back mb-5">Seguir Comprando</button>
+    <button type="button" class="btn-check-continue mt-5" [disabled]="productosCarrito == []" (click)="moverCheckout()">Checkout</button>
+    <button type="button" class="btn-check-back mb-5" (click)="regresar()">Seguir Comprando</button>
 
 </div>
 
 <!--Checkout Car Section-->
-<div id="CheckoutSection" class="d-none">
+<div id="CheckoutSection" [ngClass]="{'d-block': region == 'checkout', 'd-none': region != 'checkout'}">
     <!--Title Section-->
     <div class="title-banner-chck">
         <label>Checkout</label>
@@ -130,11 +99,19 @@
     <div class="container">
         <p class="title-checkout">Necesitamos saber donde te encuentras</p>
         <hr class="header-checkout">
-        <form class="form-checkout-info mt-4 mb-5">
+        <form class="form-checkout-info mt-4 mb-5 " novalidate [formGroup]="formCheckoutInfo">
             <label for="nameReceptorCustomer">¿A quién le entregaremos la orden?</label>
-            <input type="text" id="nameReceptorCustomer">
+            <input type="text" formControlName="destinatario" id="nameReceptorCustomer"
+            [ngClass]="{'is-invalid': destinatario.invalid && (destinatario.dirty || destinatario.touched), 'is-valid': destinatario.valid}">
+            <div class="invalid-feedback checkout-feedback" *ngIf="destinatario.errors">
+                <span *ngIf="destinatario.errors.required">Este campo no puede quedar vacío</span>
+            </div>
             <label for="addressCustomer">Dirección exacta de donde te encuentras</label>
-            <textarea id="addressCustomer" rows="5"></textarea>
+            <textarea id="addressCustomer"  formControlName="direccion" rows="5"
+            [ngClass]="{'is-invalid': destinatario.invalid && (destinatario.dirty || destinatario.touched), 'is-valid': destinatario.valid}"></textarea>
+            <div class="invalid-feedback checkout-feedback" *ngIf="direccion.errors">
+                <span *ngIf="direccion.errors.required">Este campo no puede quedar vacío</span>
+            </div>
             <label for="">Apunta en el mapa tu ubicación</label>
             <app-map></app-map>
         </form>
@@ -144,40 +121,19 @@
             <thead>
                 <tr>
                     <th scope="col">Producto</th>
+                    <th scope="col">Cant</th>
                     <th scope="col">Precio</th>
-                    <th scope="col">Envío</th>
                     <th scope="col">ISV</th>
                     <th scope="col">Total</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td class="invoice-description">Wendy´s Pack =1 HAM, 1 REF 1.25L, 1 PAPAS MED</td>
-                    <td class="invoice-cost">L.100.00</td>
-                    <td class="invoice-cost">L.100.00</td>
-                    <td class="invoice-cost">L.100.00</td>
-                    <td class="invoice-cost">L.100.00</td>
-                </tr>
-                <tr>
-                    <td class="invoice-description">Wendy´s Pack =1 HAM, 1 REF 1.25L, 1 PAPAS MED</td>
-                    <td class="invoice-cost">L.100.00</td>
-                    <td class="invoice-cost">L.100.00</td>
-                    <td class="invoice-cost">L.100.00</td>
-                    <td class="invoice-cost">L.100.00</td>
-                </tr>
-                <tr>
-                    <td class="invoice-description">Wendy´s Pack =1 HAM, 1 REF 1.25L, 1 PAPAS MED</td>
-                    <td class="invoice-cost">L.100.00</td>
-                    <td class="invoice-cost">L.100.00</td>
-                    <td class="invoice-cost">L.100.00</td>
-                    <td class="invoice-cost">L.100.00</td>
-                </tr>
-                <tr>
-                    <td class="invoice-description">Wendy´s Pack =1 HAM, 1 REF 1.25L, 1 PAPAS MED</td>
-                    <td class="invoice-cost">L.100.00</td>
-                    <td class="invoice-cost">L.100.00</td>
-                    <td class="invoice-cost">L.100.00</td>
-                    <td class="invoice-cost">L.100.00</td>
+                <tr *ngFor="let item of productosCarrito; let i = index">
+                    <td class="invoice-description">{{item.producto.nombre}}</td>
+                    <td class="invoice-cost">X {{item.cantidad}}</td>
+                    <td class="invoice-cost">L. {{item.producto.precio | number: '1.2-2'}}</td>
+                    <td class="invoice-cost">L. {{item.producto.isv | number: '1.2-2'}}</td>
+                    <td class="invoice-cost">L. {{((item.producto.precio + item.producto.isv) * item.cantidad) | number : '1.2-2'}}</td>
                 </tr>
             </tbody>
             <tfoot>
@@ -186,33 +142,51 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td class="invoice-cost">L.100.00</td>
+                    <td class="invoice-cost">L. {{totalTemp | number : '1.2-2'}}</td>
                 </tr>
             </tfoot>
         </table>
 
         <p class="title-checkout mt-5">Método de Pago</p>
         <hr class="header-checkout">
-        <form class="form-checkout-info mt-4">
+        <form class="form-checkout-info mt-4 needs-validation" novalidate [formGroup]="formCheckoutCredito">
             <label for="creditNumber">Número de Tarjeta de Crédito/Débito</label>
-            <input type="text" id="creditNumber">
+            <input type="text" id="creditNumber" formControlName="numeroTarjeta" required
+            [ngClass]="{'is-invalid': numeroTarjeta.invalid && (numeroTarjeta.dirty || numeroTarjeta.touched), 'is-valid': numeroTarjeta.valid}">
+            <div class="invalid-feedback checkout-feedback" *ngIf="numeroTarjeta.errors">
+                <span *ngIf="numeroTarjeta.errors.required">Este campo no puede quedar vacío</span>
+                <span *ngIf="numeroTarjeta.errors.pattern">Tarjeta de Crédito/Débito Inválida</span>
+            </div>
             <img src="../../assets/img/empresa-logo-mastercard.svg" alt="" srcset="">
             <img src="../../assets/img/empresa-Visa-Logo.png" alt="" srcset="">
             <br />
             <label for="creditName">Nombre del Titular</label>
-            <input type="text" id="creditName">
+            <input type="text" id="creditName" formControlName="titular" required
+            [ngClass]="{'is-invalid': titular.invalid && (titular.dirty || titular.touched), 'is-valid': titular.valid}">
+            <div class="invalid-feedback checkout-feedback" *ngIf="titular.errors">
+                <span *ngIf="titular.errors.required">Este campo no puede quedar vacío</span>
+            </div>
             <label for="creditDateExp">Fecha de Expiración</label>
-            <input type="date" id="creditDateExp">
+            <input type="date" id="creditDateExp" formControlName="fechaExpiracion" required
+            [ngClass]="{'is-invalid': fechaExpiracion.invalid && (fechaExpiracion.dirty || fechaExpiracion.touched), 'is-valid': fechaExpiracion.valid}">
+            <div class="invalid-feedback checkout-feedback" *ngIf="fechaExpiracion.errors">
+                <span *ngIf="fechaExpiracion.errors.required">Este campo no puede quedar vacío</span>
+            </div>
             <label for="creditCCV">CCV</label>
-            <input type="text" id="creditCCV">
+            <input type="text" id="creditCCV" formControlName="ccv" required
+            [ngClass]="{'is-invalid': ccv.invalid && (ccv.dirty || ccv.touched), 'is-valid': ccv.valid}">
+            <div class="invalid-feedback checkout-feedback" *ngIf="ccv.errors">
+                <span *ngIf="ccv.errors.required">Este campo no puede quedar vacío</span>
+                <span *ngIf="ccv.errors.pattern">Campo solo de 3 dígitos</span>
+            </div>
         </form>
     </div>
     <hr class="footer-check-line">
-    <button type="button" class="btn-check-continue mt-5">Checkout</button>
+    <button type="button" class="btn-check-continue mt-5" [disabled]="formCheckoutCredito.invalid || (formCheckoutInfo.value.direccion == '')" (click)="confirmarOrden()">Confirmar</button>
     <button type="button" class="btn-check-back mb-5">Regresar al Carrito</button>
 </div>
 
-<div id="OrderCompleteSection">
+<div id="OrderCompleteSection" [ngClass]="{'d-block': region == 'completa', 'd-none': region != 'completa'}">
     <!--Title Section-->
     <div class="title-banner-chck">
         <label>Completar Orden</label>
@@ -222,43 +196,41 @@
         <h6 class="text-center">Orden completada</h6>
         <p>Gracias, su orden se ha recibido</p>
     </div>
-    <div class="check-order-resume">
+    <div class="check-order-resume" *ngIf="ordenCompleta != ''">
         <label>Numero de Orden</label>
-        <p>23</p>
-        <label>Fecha</label>
-        <p>Junio 6 2021</p>
+        <p>{{ordenCompleta.numOrden}}</p>
+        <label>Fecha y Hora Local:</label>
+        <p>{{ordenCompleta.fecha}}</p>
         <label>Total</label>
-        <p>L.105.00</p>
+        <p>L. {{totalTemp | number : '1.2-2'}}</p>
         <label>Número de Tarjeta</label>
-        <p>XXXX-XXXX-XXXX</p>
+        <p>{{ordenCompleta.metodoPago.numeroTarjeta}}</p>
     </div>
 
-    <div class="container">
+    <div class="container" *ngIf="ordenCompleta != ''">
         <p class="title-checkout mt-5">Detalles del Cliente</p>
         <hr class="header-checkout">
         <table class="table table-details-small ">
             <tbody>
                 <tr>
                     <td>Nombre</td>
-                    <td>Luis Miguel</td>
+                    <td>{{ordenCompleta.cliente.nombre}}</td>
                 </tr>
                 <tr>
-                    <td>Correo</td>
-                    <td>elcorreo@unah.hn</td>
+                    <td>Titular Tarjeta</td>
+                    <td>{{ordenCompleta.metodoPago.titular}}</td>
                 </tr>
             </tbody>
         </table>
         <p class="title-checkout mt-5">Dirección del Cliente</p>
         <hr class="header-checkout">
-        <p class="order-description">Calle Principal
-            Bloque H
-            Casa # 234 Color Rojo
-            Col. La Esperanza
-            Tegucigalpa, HN</p>
+        <p class="order-description">{{ordenCompleta.ubicacionOrden.direccion}}</p>
     </div>
     <h4 class="text-center mt-5">Su orden arribara lo más pronto posible!</h4>
     <h5 class="text-center mb-5">Gracias por elegir Nany</h5>
     <hr class="footer-check-line">
-    <button type="button" class="btn-check-continue mt-4 mb-5">Listo</button>
+    <button type="button" class="btn-check-continue mt-4 mb-5" (click)="ordenTerminada()">Listo</button>
 </div>
+
+<ngx-spinner *ngIf="isLoading" bdColor = "rgba(255,255,255,0.8)" size = "large" color = "#a6032f" type = "square-jelly-box" [fullScreen] = "true"></ngx-spinner>
 <app-footer></app-footer>

@@ -3,31 +3,38 @@
 <div id="historialContainer" class="container pb-5">
     <h3 class="text-center my-4">Mis compras realizadas</h3>
     <div id="historial">
-        <div *ngFor="let order of orders" class="row">
-            <h3 class="text-initial mt-2">{{order.date}}</h3>
+        <div *ngFor="let orden of ordenes; let i = index" class="row">
+            <h3 class="text-initial mt-2">{{orden.fecha | date:'dd-MM-yyyy hh:mm:ss a':'+0530'}}</h3>
             <hr>
             <div class="col-8 mt-2">
-                <h5>{{order.productName}}</h5>
-                <h6> Comprador: {{order.buyer}}</h6>
-                <h6>Total de Factura: L. {{order.total}}</h6>
-                <h6>Destino: {{order.destination}}</h6>
+                <h5>{{orden.detalleProductos[0].producto.nombre}}</h5>
+                <h6> Comprador: {{orden.cliente.nombre}}</h6>
+                <h6>Total de Factura: L. {{orden.factura.total | number: '1.2-2'}}</h6>
+                <h6>Destino: {{orden.ubicacionOrden.direccion}}</h6>
             </div>
             <div class="col-4 mb-2">
-                <a data-bs-toggle="modal" data-bs-target="#modalInvoice" class="col-4 mb-2">
-                    <img class="d-block img-historial" :src="{{order.imgOrder}}" alt="">
+                <a data-bs-toggle="modal" data-bs-target="#modalInvoice" (click)="verDetalleOrden(i)" class="col-4 mb-2">
+                    <img class="d-block img-historial" :src="{{orden.detalleProductos[0].producto.imagen}}" alt="">
                 </a>
-                <button class="d-block btn btn-state-order" :style="background-color:{{order.state.color}}"
-                    type="button">{{order.state.name}}</button>
+                <button class="d-block btn btn-state-order" 
+                [ngClass]="{'btn-primary' : orden.tipoEstado.idEstado == '0',
+                'btn-onWay' : orden.tipoEstado.idEstado == '1',
+                'btn-onOrigin' : orden.tipoEstado.idEstado == '2',
+                'btn-onDestiny' : orden.tipoEstado.idEstado == '3',
+                'btn-delivered' : orden.tipoEstado.idEstado == '4'
+                }"
+                type="button">{{orden.tipoEstado.nombreEstado}}</button>
             </div>
             <hr>
         </div>
     </div>
+    <ngx-spinner *ngIf="isLoading" bdColor = "rgba(255,255,255,0.8)" size = "large" color = "#a6032f" type = "square-jelly-box" [fullScreen] = "false"></ngx-spinner>
 </div>
 
 <!-- Modal -->
 <div class="modal fade" id="modalInvoice" tabindex="-1">
     <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal-content" *ngIf="ordenDetalle != ''">
             <div class="modal-header">
                 <img src="../assets/logos/Logo-Nany-trans-1.png" id="logo">
             </div>
@@ -37,49 +44,42 @@
                     <thead>
                         <tr>
                             <th scope="col">Producto</th>
+                            <th scope="col">Cantidad</th>
                             <th scope="col">Precio</th>
-                            <th scope="col">Envío</th>
                             <th scope="col">ISV</th>
                             <th scope="col">Total</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td class="invoice-description">Wendy´s Pack =1 HAM, 1 REF 1.25L, 1 PAPAS MED</td>
-                            <td class="invoice-cost">L.100.00</td>
-                            <td class="invoice-cost">L.100.00</td>
-                            <td class="invoice-cost">L.100.00</td>
-                            <td class="invoice-cost">L.100.00</td>
-                        </tr>
-                        <tr>
-                            <td class="invoice-description">Wendy´s Pack =1 HAM, 1 REF 1.25L, 1 PAPAS MED</td>
-                            <td class="invoice-cost">L.100.00</td>
-                            <td class="invoice-cost">L.100.00</td>
-                            <td class="invoice-cost">L.100.00</td>
-                            <td class="invoice-cost">L.100.00</td>
-                        </tr>
-                        <tr>
-                            <td class="invoice-description">Wendy´s Pack =1 HAM, 1 REF 1.25L, 1 PAPAS MED</td>
-                            <td class="invoice-cost">L.100.00</td>
-                            <td class="invoice-cost">L.100.00</td>
-                            <td class="invoice-cost">L.100.00</td>
-                            <td class="invoice-cost">L.100.00</td>
-                        </tr>
-                        <tr>
-                            <td class="invoice-description">Wendy´s Pack =1 HAM, 1 REF 1.25L, 1 PAPAS MED</td>
-                            <td class="invoice-cost">L.100.00</td>
-                            <td class="invoice-cost">L.100.00</td>
-                            <td class="invoice-cost">L.100.00</td>
-                            <td class="invoice-cost">L.100.00</td>
+                        <tr *ngFor="let item of ordenDetalle">
+                            <td class="invoice-description">{{item.producto.nombre}}</td>
+                            <td class="invoice-cost">X{{item.cantidad}}</td>
+                            <td class="invoice-cost">L.{{item.producto.precio | number: '1.2-2'}}</td>
+                            <td class="invoice-cost">L.{{item.producto.isv | number: '1.2-2'}}</td>
+                            <td class="invoice-cost">L.{{((item.producto.precio + item.producto.isv) * item.cantidad) | number : '1.2-2'}}</td>
                         </tr>
                     </tbody>
                     <tfoot>
                         <tr>
-                            <th>Total:</th>
+                            <th class="pb-0">Subtotal:</th>
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td class="invoice-cost">L.100.00</td>
+                            <td class="invoice-cost pb-0">L.{{factura.subtotal | number: '1.2-2'}}</td>
+                        </tr>
+                        <tr>
+                            <th class="py-0">Costo Envio:</th>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="invoice-cost py-0">L.{{factura.costoEnvio | number: '1.2-2'}}</td>
+                        </tr>
+                        <tr class="pb-2">
+                            <th class="py-0 total-invoice">Total:</th>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="total-invoice-number py-0">L.{{factura.total | number: '1.2-2'}}</td>
                         </tr>
                     </tfoot>
                 </table>

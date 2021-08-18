@@ -11,6 +11,10 @@ export class OrdenesService {
   constructor(private httpClient: HttpClient) { }
 
   obtenerOrdenes(idUsuario: String):Observable<any> {
-    return this.httpClient.get(`${API_BASE_URL}/usuarios/${idUsuario}`)
+    return this.httpClient.get(`${API_BASE_URL}/usuarios/${idUsuario}`);
+  }
+
+  nuevaOrden(orden):Observable<any> {
+    return this.httpClient.post(`${API_BASE_URL}/ordenes`, orden);
   }
 }

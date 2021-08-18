@@ -1,5 +1,9 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, Output, EventEmitter } from '@angular/core';
 import * as L from 'leaflet';
+
+import 'leaflet/dist/images/marker-shadow.png';
+import 'leaflet/dist/images/marker-icon.png';
+import 'leaflet/dist/images/marker-icon-2x.png';
 
 @Component({
   selector: 'app-map',
@@ -7,18 +11,14 @@ import * as L from 'leaflet';
   styleUrls: ['./map.component.sass'],
 })
 export class MapComponent implements AfterViewInit {
-  private map;
+  @Output() onLatLong = new EventEmitter();
+  map: any;
 
-  private initMap(): void {
+  initMap(): void {
     this.map = L.map('map', {
       center: [14.543867, -86.8395272],
       zoom: 6.0,
     });
-
-    this.map.on('click', function (ev) {
-      alert(ev.latlng); // ev is an event object (MouseEvent in this case)
-    });
-
     const tiles = L.tileLayer(
       'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       {
@@ -30,6 +30,22 @@ export class MapComponent implements AfterViewInit {
     );
 
     tiles.addTo(this.map);
+    let marker;
+    this.map.on('click', (e) => {
+      if (marker) {
+        this.map.removeLayer(marker);
+      }
+      marker = L.marker([e.latlng.lat, e.latlng.lng], {
+        draggable: false,
+        bounceOnAdd: true,
+        title: 'Aquí Estoy',
+      })
+        .addTo(this.map)
+        .bindPopup('Aquí Estoy')
+        .openPopup();
+
+      this.onLatLong.emit(e.latlng);
+    });
   }
 
   constructor() {}

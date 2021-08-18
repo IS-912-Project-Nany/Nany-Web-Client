@@ -83,7 +83,7 @@
         </div>
     </div>
 
-    <button type="button" class="btn-check-continue mt-5" [disabled]="productosCarrito == []" (click)="moverCheckout()">Checkout</button>
+    <button type="button" class="btn-check-continue mt-5" [disabled]="productosCarrito == ''" (click)="moverCheckout()">Checkout</button>
     <button type="button" class="btn-check-back mb-5" (click)="regresar()">Seguir Comprando</button>
 
 </div>
@@ -113,7 +113,7 @@
                 <span *ngIf="direccion.errors.required">Este campo no puede quedar vacío</span>
             </div>
             <label for="">Apunta en el mapa tu ubicación</label>
-            <app-map></app-map>
+            <app-map (onLatLong)="latlong($event)"></app-map>
         </form>
         <p class="title-checkout">Su Orden</p>
         <hr class="header-checkout">

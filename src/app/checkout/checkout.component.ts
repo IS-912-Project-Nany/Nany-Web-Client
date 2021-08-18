@@ -18,6 +18,8 @@ export class CheckoutComponent implements OnInit {
   region: string = 'carrito';
   isLoading: boolean = false;
   ordenCompleta: any = '';
+  latitud: any = '';
+  longitud : any = '';
 
   formCheckoutInfo = new FormGroup({
     destinatario: new FormControl('', [Validators.required, Validators.maxLength(30)]),
@@ -57,7 +59,7 @@ export class CheckoutComponent implements OnInit {
           });
         }
       } else {
-
+        this.productosCarrito = [];
       }
     }
   }
@@ -81,6 +83,12 @@ export class CheckoutComponent implements OnInit {
     })
   }
 
+  latlong(latlong){
+    console.log(latlong);
+    this.latitud = latlong.lat;
+    this.longitud = latlong.lng;
+  }
+
   confirmarOrden() {
     this.isLoading = true;
     let orden = {
@@ -90,8 +98,8 @@ export class CheckoutComponent implements OnInit {
       ubicacionOrden: {
         destinatario: this.formCheckoutInfo.value.destinatario,
         direccion: this.formCheckoutInfo.value.direccion,
-        latitud: "14.0827398",
-        longitud: "-87.273984" 
+        latitud: this.latitud,
+        longitud: this.longitud 
       },
       tipoEstado:{
         idEstado: "0",
@@ -127,7 +135,13 @@ export class CheckoutComponent implements OnInit {
     this.productosCarrito = [];
     this.ordenCompleta = '';
     this.localStorage.setItem('productosCarrito' + this.usuario.nombre, JSON.stringify(this.productosCarrito));
-    this._route.navigate(['/categorias']);
+    Swal.fire({
+      icon: 'success',
+      title: 'Orden Exitosa',
+      confirmButtonText: 'Ok',
+      confirmButtonColor: '#A6032F'
+    })
+    this._route.navigate(['/historial']);
   }
 
   moverCheckout() {

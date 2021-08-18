@@ -111,32 +111,13 @@
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
           </div>
           <div class="carousel-inner">
-            <div class="carousel-item active">
+            <div class="carousel-item" *ngFor="let producto of productosMuestra; let i = index" [ngClass]="{'active': i == 0}" >
               <div class="carousel-item-bg">
-                <img src="../assets/img/products/Coca-Cola-bebida.webp" class="products-carousel-landing d-block " alt="...">
+                <img src="{{producto.imagen}}" class="products-carousel-landing d-block " alt="...">
               </div>
-              <p class="products-title-landing text-center">Coca Cola Vidrio</p>
-              <p class="products-price-landing text-center">L. 10.00</p>
-              <app-button-add-producto></app-button-add-producto>
-              <button type="button" class="btn-primary products-btn-landing" routerLink="/login" >Agregar al Carrito</button>
-            </div>
-            <div class="carousel-item">
-              <div class="carousel-item-bg">
-                <img src="../assets/img/products/Coca-Cola-bebida.webp" class="products-carousel-landing d-block " alt="...">
-              </div>
-              <p class="products-title-landing text-center">Coca Cola Vidrio</p>
-              <p class="products-price-landing text-center">L. 10.00</p>
-              <app-button-add-producto></app-button-add-producto>
-              <button type="button" class="btn-primary products-btn-landing" routerLink="/login">Agregar al Carrito</button>
-            </div>
-            <div class="carousel-item">
-              <div class="carousel-item-bg">
-                <img src="../assets/img/products/Coca-Cola-bebida.webp" class="products-carousel-landing d-block " alt="...">
-              </div>
-              <p class="products-title-landing text-center">Coca Cola Vidrio</p>
-              <p class="products-price-landing text-center">L. 10.00</p>
-              <app-button-add-producto></app-button-add-producto>
-              <button type="button" class="btn-primary products-btn-landing" routerLink="/login">Agregar al Carrito</button>
+              <p class="products-title-landing text-center">{{producto.nombre}}</p>
+              <p class="products-price-landing text-center">L. {{producto.precio}}</p>
+              <button type="button" class="btn-primary products-btn-landing" (click)="verProducto(producto)" >Agregar al Carrito</button>
             </div>
           </div>
           <button class="carousel-control-prev btn-fix-carousel" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">

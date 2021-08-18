@@ -101,11 +101,15 @@ export class ProductosComponent implements OnInit {
         icon: 'success',
         title: 'Producto Agregado al carrito',
         text: 'Revisa tu carrito de compras.',
+        confirmButtonText: 'Ok',
+        confirmButtonColor: '#A6032F'
       })
     } else {
       Swal.fire({
         icon: 'info',
         text: 'Inicia sesión para poder agregar al carrito.',
+        confirmButtonText: 'Ok',
+        confirmButtonColor: '#A6032F'
       })
       this._route.navigate(['/login']);
     }

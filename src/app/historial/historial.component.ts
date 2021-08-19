@@ -32,6 +32,11 @@ export class HistorialComponent implements OnInit {
               return a > b ? -1 : a < b ? 1 : 0;
             });
             console.log(result.ordenes);
+            result.ordenes.forEach(orden => {
+              if (orden.tipoEstado.idEstado == '0') {
+                orden.tipoEstado.nombreEstado = 'En Proceso'
+              };
+            });
             this.ordenes = result.ordenes;
             this.isLoading = false;
           },

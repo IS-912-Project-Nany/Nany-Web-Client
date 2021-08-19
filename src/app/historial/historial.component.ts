@@ -26,7 +26,7 @@ export class HistorialComponent implements OnInit {
         .obtenerOrdenes(this.cookiesService.get('nanyUsuarioId'))
         .subscribe(
           (result) => {
-            this.noOrdenes = false;
+            this.noOrdenes = true;
             if(result != null) {
               console.log(result);
               result.ordenes.sort((a, b) => {

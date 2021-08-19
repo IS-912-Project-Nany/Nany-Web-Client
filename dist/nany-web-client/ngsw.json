@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1629409611284,
+  "timestamp": 1629411770005,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -12,7 +12,7 @@
       },
       "urls": [
         "/index.html",
-        "/main.d6a754a86863bb739cdc.js",
+        "/main.0c99a3da6dc756155b99.js",
         "/manifest.webmanifest",
         "/polyfills.5851e6ac6a8655461f26.js",
         "/runtime.7b63b9fd40098a2e8207.js",
@@ -236,10 +236,10 @@
     "/assets/logos/Logo2-Nany-trans-blanco.png": "e56451d43e1650e806e8011d70e4ca877f45e218",
     "/assets/logos/Logo2-Nany-trans.png": "7329b59abd27b4878e39f6a01c28e06f0b0bde5f",
     "/assets/logos/logo-footer.png": "f600b811224affa02f4c304660e096e1642b4e52",
-    "/index.html": "1291b0fbf6924b2cf5174bff45822d68655673fa",
+    "/index.html": "da5373a77dcdd07c1afc7ce572a0f38bc2be2513",
     "/layers-2x.8f2c4d11474275fbc161.png": "152a162333e46d24f9d89f566312fc0c64011dee",
     "/layers.416d91365b44e4b4f477.png": "c9e7528e491a39232ba24a2706c6c739d6fb0f06",
-    "/main.d6a754a86863bb739cdc.js": "3efe04e5809fc3c275b00f2a4fbeb6610dec2fbf",
+    "/main.0c99a3da6dc756155b99.js": "eef350e7530fc7ec5b886b3f79ef7346a2013d4f",
     "/manifest.webmanifest": "017f9e635b5f72ca93ff3901aeb67e861b1f82f0",
     "/marker-icon-2x.680f69f3c2e6b90c1812.png": "cf3a536596b1f58e0ac805404183c8e6d6bdacb5",
     "/marker-icon.2b3e1faf89f94a483539.png": "60a90bcbb2b42b7ddb4556db94eb7c1084b0e5da",

@@ -3,6 +3,8 @@ import { FormControl, FormGroup, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { UsuariosService } from '../services/usuarios.service';
+import { CiudadesService } from '../services/ciudades.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-registro',
@@ -22,34 +24,24 @@ export class RegistroComponent implements OnInit {
   confirmPassword = new FormControl('',[Validators.required]);
   responseRegistro: any = '';
   isLoading: boolean = false;
-  ciudades = [
-    { idCiudad: 1, ciudad: 'Choluteca'},
-    { idCiudad: 2, ciudad: 'Comayagua'},
-    { idCiudad: 3, ciudad: 'Gracias'},
-    { idCiudad: 4, ciudad: 'Juticalpa'},
-    { idCiudad: 5, ciudad: 'La Ceiba'},
-    { idCiudad: 6, ciudad: 'La Paz'},
-    { idCiudad: 7, ciudad: 'La Esperanza'},
-    { idCiudad: 8, ciudad: 'Nacaome'},
-    { idCiudad: 9, ciudad: 'Nuevo Ocotepeque'},
-    { idCiudad: 10, ciudad: 'Puerto Lempira'},
-    { idCiudad: 11, ciudad: 'Roatán'},
-    { idCiudad: 12, ciudad: 'San Pedro Sula'},
-    { idCiudad: 13, ciudad: 'Santa Bárbara'},
-    { idCiudad: 14, ciudad: 'Santa  Rosa de Copán'},
-    { idCiudad: 15, ciudad: 'Tegucigalpa'},
-    { idCiudad: 16, ciudad: 'Trujillo'},
-    { idCiudad: 17, ciudad: 'Yoro'},
-    { idCiudad: 18, ciudad: 'Yuscarán'}
-  ]
+  ciudades: any = []
 
   constructor(
     private usuariosService: UsuariosService,
     private cookiesService:CookieService,
+    private ciudadesService: CiudadesService,
     private _route: Router
     ) { }
 
   ngOnInit() {
+    this.ciudadesService.obtenerCiudades().subscribe(
+      result=>{
+        this.ciudades = result;
+      },
+      error=>{
+        console.log(error);
+      }
+    )
   }
 
   registrar() {
@@ -95,7 +87,12 @@ export class RegistroComponent implements OnInit {
             result.usuario.apellido,
             dateNow
           );
-
+          Swal.fire({
+            icon: 'success',
+            title: 'Registro Exitoso',
+            confirmButtonText: 'Ok',
+            confirmButtonColor: '#A6032F'
+          })
           this._route.navigate(['/categorias']);
         }
         console.log(result);

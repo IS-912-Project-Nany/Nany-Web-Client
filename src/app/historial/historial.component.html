@@ -1,7 +1,8 @@
 
 <app-navbar></app-navbar>
 <div id="historialContainer" class="container pb-5">
-    <h3 class="text-center my-4">Mis compras realizadas</h3>
+    <h3 class="text-center my-4" *ngIf="noOrdenes">Mis compras realizadas</h3>
+    <h3 class="text-center my-4" *ngIf="!noOrdenes">No tienes compras realizadas</h3>
     <div id="historial">
         <div *ngFor="let orden of ordenes; let i = index" class="row">
             <h3 class="text-initial mt-2">{{orden.fecha | date:'dd-MM-yyyy hh:mm:ss a':'+0530'}}</h3>

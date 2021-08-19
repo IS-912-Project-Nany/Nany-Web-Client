@@ -12,6 +12,7 @@ export class HistorialComponent implements OnInit {
   ordenDetalle: any = '';
   factura: any = '';
   isLoading: boolean = false;
+  noOrdenes: boolean = false;
   constructor(
     private cookiesService: CookieService,
     private ordenesService: OrdenesService,
@@ -25,20 +26,24 @@ export class HistorialComponent implements OnInit {
         .obtenerOrdenes(this.cookiesService.get('nanyUsuarioId'))
         .subscribe(
           (result) => {
-            console.log(result);
-            result.ordenes.sort((a, b) => {
-              a = new Date(a.fecha);
-              b = new Date(b.fecha);
-              return a > b ? -1 : a < b ? 1 : 0;
-            });
-            console.log(result.ordenes);
-            result.ordenes.forEach(orden => {
-              if (orden.tipoEstado.idEstado == '0') {
-                orden.tipoEstado.nombreEstado = 'En Proceso'
-              };
-            });
-            this.ordenes = result.ordenes;
-            this.isLoading = false;
+            if(result != null) {
+              console.log(result);
+              result.ordenes.sort((a, b) => {
+                a = new Date(a.fecha);
+                b = new Date(b.fecha);
+                return a > b ? -1 : a < b ? 1 : 0;
+              });
+              console.log(result.ordenes);
+              result.ordenes.forEach(orden => {
+                if (orden.tipoEstado.idEstado == '0') {
+                  orden.tipoEstado.nombreEstado = 'En Proceso'
+                };
+              });
+              this.ordenes = result.ordenes;
+              this.isLoading = false;
+            } else {
+              this.noOrdenes = true;
+            }
           },
           (error) => {
             console.log(error);

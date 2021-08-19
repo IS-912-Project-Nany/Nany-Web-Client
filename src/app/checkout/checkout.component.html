@@ -183,7 +183,7 @@
     </div>
     <hr class="footer-check-line">
     <button type="button" class="btn-check-continue mt-5" [disabled]="formCheckoutCredito.invalid || (formCheckoutInfo.value.direccion == '')" (click)="confirmarOrden()">Confirmar</button>
-    <button type="button" class="btn-check-back mb-5">Regresar al Carrito</button>
+    <button type="button" class="btn-check-back mb-5" (click)="regresar()">Regresar al Carrito</button>
 </div>
 
 <div id="OrderCompleteSection" [ngClass]="{'d-block': region == 'completa', 'd-none': region != 'completa'}">

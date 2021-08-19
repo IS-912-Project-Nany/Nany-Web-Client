@@ -4,8 +4,8 @@
   "theme_color": "#A6032F",
   "background_color": "#fff",
   "display": "standalone",
-  "scope": "./",
-  "start_url": "./",
+  "scope": "/",
+  "start_url": "/",
   "icons": [
     {
       "src": "assets/logos/Logo-Nany-trans-1-Icono.png",

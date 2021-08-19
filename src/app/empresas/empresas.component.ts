@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { EmpresasService } from '../services/empresas.service';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-empresas',
@@ -51,7 +52,8 @@ export class EmpresasComponent implements OnInit {
   empresas: any = [];
   constructor(
     private ruta: ActivatedRoute,
-    private empresasService: EmpresasService) {
+    private empresasService: EmpresasService,
+    private spinner: NgxSpinnerService) {
     this.ruta.params.subscribe(params => {
       this.idCategoria = params._id;
     })

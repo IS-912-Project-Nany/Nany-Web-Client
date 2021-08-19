@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoriasService } from '../services/categorias.service';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-categorias',
@@ -106,7 +107,7 @@ export class CategoriasComponent implements OnInit {
   // ];
   categorias: any = [];
   isLoading:boolean = false;
-  constructor(private categoriasServices: CategoriasService) {}
+  constructor(private categoriasServices: CategoriasService, private spinner: NgxSpinnerService,) {}
 
   ngOnInit(): void {
     this.scrollToTop();

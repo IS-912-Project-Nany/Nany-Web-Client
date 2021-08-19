@@ -8,6 +8,7 @@ import { EmpresasService } from '../services/empresas.service';
 import Swal from 'sweetalert2';
 import { CookieService } from 'ngx-cookie-service';
 import { NavbarComponent } from '../navbar/navbar.component';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-productos',
@@ -22,7 +23,7 @@ export class ProductosComponent implements OnInit {
   productos:any = [];
   detalleProducto: any = '';
   cantidadProducto: any = '';
-  
+  isLoading: boolean = false;
 
   constructor(
     library: FaIconLibrary,
@@ -30,7 +31,8 @@ export class ProductosComponent implements OnInit {
     private _route: Router,
     private productosService: ProductosService,
     private empresasService: EmpresasService,
-    private cookiesService: CookieService
+    private cookiesService: CookieService,
+    private spinner: NgxSpinnerService
     ) {
     library.addIcons(fasStar, farStar);
     this.ruta.params.subscribe(params => {
@@ -39,6 +41,8 @@ export class ProductosComponent implements OnInit {
     })
   }
   ngOnInit(): void {
+    this.isLoading =true;
+    this.spinner.show();
     this.productosService.obtenerProductos(this.idCategoria, this.idEmpresa).subscribe(
       result => {
         console.log(result);
@@ -53,6 +57,7 @@ export class ProductosComponent implements OnInit {
       result => {
         this.empresa = result.empresas[0];
         this.nombreCategoria = result.nombre;
+        this.isLoading = false
       },
       error => {
         console.log(error);

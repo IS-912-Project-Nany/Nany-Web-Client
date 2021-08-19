@@ -131,9 +131,9 @@
                 <tr *ngFor="let item of productosCarrito; let i = index">
                     <td class="invoice-description">{{item.producto.nombre}}</td>
                     <td class="invoice-cost">X {{item.cantidad}}</td>
-                    <td class="invoice-cost">L. {{item.producto.precio | number: '1.2-2'}}</td>
-                    <td class="invoice-cost">L. {{item.producto.isv | number: '1.2-2'}}</td>
-                    <td class="invoice-cost">L. {{((item.producto.precio + item.producto.isv) * item.cantidad) | number : '1.2-2'}}</td>
+                    <td class="invoice-cost">L.{{item.producto.precio | number: '1.2-2'}}</td>
+                    <td class="invoice-cost">L.{{item.producto.isv | number: '1.2-2'}}</td>
+                    <td class="invoice-cost">L.{{((item.producto.precio + item.producto.isv) * item.cantidad) | number : '1.2-2'}}</td>
                 </tr>
             </tbody>
             <tfoot>

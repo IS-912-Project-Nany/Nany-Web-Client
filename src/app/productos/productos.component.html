@@ -92,5 +92,5 @@
         </div>
     </div>
 </div>
-
-<app-footer></app-footer>
+<ngx-spinner *ngIf="isLoading" bdColor = "rgba(255,255,255,0.8)" size = "large" color = "#a6032f" type = "square-jelly-box" [fullScreen] = "false"></ngx-spinner>
+<app-footer *ngIf="productos.length != 0"></app-footer>

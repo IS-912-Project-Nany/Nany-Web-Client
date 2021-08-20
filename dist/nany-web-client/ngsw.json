@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1629440316386,
+  "timestamp": 1629503396079,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -17,7 +17,7 @@
         "/polyfills.5851e6ac6a8655461f26.js",
         "/runtime.7b63b9fd40098a2e8207.js",
         "/scripts.d20fa30793355a6f3ff7.js",
-        "/styles.a4b1929e55eb1962186c.css"
+        "/styles.e8d958b9d9183fc5106a.css"
       ],
       "patterns": []
     },
@@ -99,15 +99,9 @@
         "/assets/img/categories/categoria-super.png",
         "/assets/img/categories/categoria-vestir.png",
         "/assets/img/categories/categoria-zapatos.png",
-        "/assets/img/companies/empresa-Burger-King-Logo.png",
         "/assets/img/companies/empresa-Coca-Cola_logo.svg",
-        "/assets/img/companies/empresa-McDonalds.png",
-        "/assets/img/companies/empresa-Pollo-Capero-logo.png",
-        "/assets/img/companies/empresa-Popeyes.png",
-        "/assets/img/companies/empresa-bigos.jpg",
         "/assets/img/companies/empresa-circle-logo.png",
         "/assets/img/companies/empresa-farmacia-siman.png",
-        "/assets/img/companies/empresa-kfc.png",
         "/assets/img/companies/empresa-larach-logo.png",
         "/assets/img/companies/empresa-little-caesars.svg",
         "/assets/img/companies/empresa-logo-La-Colonia.jpg",
@@ -208,15 +202,9 @@
     "/assets/img/categories/categoria-super.png": "9d2db1721d6d5b3c16a6eedcd563db26a1493a24",
     "/assets/img/categories/categoria-vestir.png": "ced4f02457f50386e69ccd65badea3aff1a33452",
     "/assets/img/categories/categoria-zapatos.png": "1a9e06c7913ba50914b85fb429a830a938ce0e74",
-    "/assets/img/companies/empresa-Burger-King-Logo.png": "952e17470406ae6a806f7cd76fd55b773c99fdc2",
     "/assets/img/companies/empresa-Coca-Cola_logo.svg": "d5e6f4a65dcbcdadbcb9477f2b0fe49d11f72199",
-    "/assets/img/companies/empresa-McDonalds.png": "a9a956d7063e27ee214ba9430fc6dcb688ccb66f",
-    "/assets/img/companies/empresa-Pollo-Capero-logo.png": "7efafa6af84ffccf8b2bb6f82c8f928895f41111",
-    "/assets/img/companies/empresa-Popeyes.png": "62c902537de08f076b2b2745966150fe2b911f25",
-    "/assets/img/companies/empresa-bigos.jpg": "8e548fb0b268613fc7fc39e88ed3cd2885fd1750",
     "/assets/img/companies/empresa-circle-logo.png": "08f37ca1bc885e5efc01aa706639f5ec7cc3751b",
     "/assets/img/companies/empresa-farmacia-siman.png": "57f532398efa93347080666d1914445357857b09",
-    "/assets/img/companies/empresa-kfc.png": "1766ef1cb7fed3aea8e1185f6b18335e93570ce3",
     "/assets/img/companies/empresa-larach-logo.png": "4d56e59fb4c28cbdc330556d427a801ede1fa747",
     "/assets/img/companies/empresa-little-caesars.svg": "c4eb9d93ef4c458f05f55b62e07d27c4d40aa57f",
     "/assets/img/companies/empresa-logo-La-Colonia.jpg": "307885e5cb9a3a5c2391a9b109ecb59c6f4bbba3",
@@ -236,7 +224,7 @@
     "/assets/logos/Logo2-Nany-trans-blanco.png": "e56451d43e1650e806e8011d70e4ca877f45e218",
     "/assets/logos/Logo2-Nany-trans.png": "7329b59abd27b4878e39f6a01c28e06f0b0bde5f",
     "/assets/logos/logo-footer.png": "f600b811224affa02f4c304660e096e1642b4e52",
-    "/index.html": "f8724cd34ae2f055d9c3c41ccf983fe7f927cdb1",
+    "/index.html": "fe3a1aae20dc53708819bbbc86945953a4761b82",
     "/layers-2x.8f2c4d11474275fbc161.png": "152a162333e46d24f9d89f566312fc0c64011dee",
     "/layers.416d91365b44e4b4f477.png": "c9e7528e491a39232ba24a2706c6c739d6fb0f06",
     "/main.ca118d241c92474d77ed.js": "3abf0851f3e8b789ceb01a4bb3e5b6df81eafe1e",
@@ -247,7 +235,7 @@
     "/polyfills.5851e6ac6a8655461f26.js": "587930b9b17d188b4b5cd9c4a2f5b0595f155fd7",
     "/runtime.7b63b9fd40098a2e8207.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
     "/scripts.d20fa30793355a6f3ff7.js": "be2ee8a15459b540e7ff90af366f9b61f01bccc1",
-    "/styles.a4b1929e55eb1962186c.css": "72e593be37680b3985a7fdcd0a8056b4f9a98e24"
+    "/styles.e8d958b9d9183fc5106a.css": "78f4d5be9f42ff432007215a2e6f264481ce1d28"
   },
   "navigationUrls": [
     {

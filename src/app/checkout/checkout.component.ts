@@ -5,6 +5,8 @@ import { Location } from '@angular/common';
 import Swal from 'sweetalert2';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import emailjs, { EmailJSResponseStatus } from 'emailjs-com';
+import { UsuariosService } from '../services/usuarios.service';
 
 @Component({
   selector: 'app-checkout',
@@ -20,6 +22,7 @@ export class CheckoutComponent implements OnInit {
   ordenCompleta: any = '';
   latitud: any = '';
   longitud : any = '';
+  cantidad: number = 0;
 
   formCheckoutInfo = new FormGroup({
     destinatario: new FormControl('', [Validators.required, Validators.maxLength(30)]),
@@ -34,10 +37,13 @@ export class CheckoutComponent implements OnInit {
     ccv: new FormControl( null, [Validators.required, Validators.maxLength(3), Validators.pattern(this.patronCcv)]),
     fechaExpiracion: new FormControl('', [Validators.required])
   });
+  subtotal: number = 0;
+  correoCliente: any;
 
   constructor(
     private cookiesService: CookieService,
     private ordenesService: OrdenesService,
+    private usuariosService: UsuariosService,
     private _location: Location,
     private _route: Router
     ) { }
@@ -49,14 +55,26 @@ export class CheckoutComponent implements OnInit {
         nombre: this.cookiesService.get('nanyUsuarioNombre'),
         apellido: this.cookiesService.get('nanyUsuarioApellido'),
       }
+      this.usuariosService.obtenerUsuario(this.cookiesService.get('nanyUsuarioId')).subscribe(
+        result => {
+          this.correoCliente = result.correo;
+        },
+        error => {
+          console.log(error);
+        }
+      );
+
       this.totalTemp = 0;
       let productosLocalStorage = JSON.parse(this.localStorage.getItem('productosCarrito' + this.usuario.nombre));
       if (productosLocalStorage != undefined) {
         if (productosLocalStorage.length != 0) {
           this.productosCarrito = productosLocalStorage;
           this.productosCarrito.forEach(item => {
-            this.totalTemp += ((item.producto.precio + item.producto.isv) * item.cantidad)  
+            this.totalTemp += ((item.producto.precio + item.producto.isv) * item.cantidad)
+            this.cantidad += item.cantidad;
+            this.subtotal += (item.producto.precio + item.producto.isv)
           });
+          this.totalTemp += 50;
         }
       } else {
         this.productosCarrito = [];
@@ -118,6 +136,7 @@ export class CheckoutComponent implements OnInit {
 
     this.ordenesService.nuevaOrden(orden).subscribe(
       result => {
+        this.sendEmail(orden);
         this.ordenCompleta = orden;
         console.log(result);
         this.isLoading = false;
@@ -129,6 +148,28 @@ export class CheckoutComponent implements OnInit {
         this.isLoading = false;
       }
     );
+  }
+
+  sendEmail(orden) {
+    let data = {
+        numOrden:orden.numOrden,
+        fecha:orden.fecha,
+        nombre:orden.cliente.nombre,
+        apellido:orden.cliente.apellido,
+        direccion:orden.ubicacionOrden.direccion,
+        cantidad: this.cantidad,
+        subtotal: this.subtotal,
+        costoEnvio: 50,
+        total: this.totalTemp,
+        correo : this.correoCliente
+    };
+    console.log(data);
+    emailjs.send("service_r9lq1rs", "template_ac9dyw6", data, 'user_nqxC017pPSZMH26b8tVMc')
+      .then((result: EmailJSResponseStatus) => {
+        console.log(result.text);
+      }, (error) => {
+        console.log(error.text);
+      });
   }
 
   ordenTerminada() {
